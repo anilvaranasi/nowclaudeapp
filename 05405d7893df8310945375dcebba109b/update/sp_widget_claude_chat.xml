@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $http, $window) {
+    var c = this;
+
+    // Available models (mirrors reference app)
+    c.models = [
+        'claude-sonnet-5',
+        'claude-opus-4-8',
+        'claude-haiku-4-5'
+    ];
+    c.selectedModel  = c.models[0];
+    c.systemPrompt   = '';
+    c.prefill        = '';
+    c.stopSequences  = '';
+    c.prompt         = '';
+    c.messages       = [];
+    c.busy           = false;
+    c.statusText     = '';
+    c.modelDisplay   = '—';
+    c.tokIn          = '—';
+    c.tokOut         = '—';
+    c.tokTot         = '—';
+    c.controlsLocked = false;
+    c.systemOpen     = false;
+    c.sessionId      = _generateId();
+
+    function _generateId() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(ch) {
+            var r = Math.random() * 16 | 0;
+            return (ch === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+    }
+
+    c.toggleSystem = function() {
+        c.systemOpen = !c.systemOpen;
+    };
+
+    c.newChat = function() {
+        $http.post('/api/x_146833_claudec_0/claude/clear', { session_id: c.sessionId });
+        c.messages       = [];
+        c.statusText     = '';
+        c.modelDisplay   = '—';
+        c.tokIn          = '—';
+        c.tokOut         = '—';
+        c.tokTot         = '—';
+        c.controlsLocked = false;
+        c.prompt         = '';
+        c.sessionId      = _generateId();
+    };
+
+    c.send = function() {
+        var prompt = (c.prompt || '').trim();
+        if (!prompt || c.busy) return;
+
+        c.messages.push({ role: 'user', text: prompt });
+        c.prompt         = '';
+        c.busy           = true;
+        c.statusText     = 'Thinking…';
+        c.controlsLocked = true;
+
+        // Placeholder for streaming assistant reply
+        var assistantMsg = { role: 'assistant', text: '', error: false };
+        c.messages.push(assistantMsg);
+
+        $http.post('/api/x_146833_claudec_0/claude/chat', {
+            session_id:     c.sessionId,
+            prompt:         prompt,
+            model:          c.selectedModel,
+            system_prompt:  c.systemPrompt,
+            prefill:        c.prefill,
+            stop_sequences: c.stopSequences
+        }).then(function(resp) {
+            var d = resp.data;
+            assistantMsg.text  = d.text || '';
+            c.modelDisplay     = d.model        || '—';
+            c.tokIn            = d.inputTokens  != null ? d.inputTokens.toLocaleString()  : '—';
+            c.tokOut           = d.outputTokens != null ? d.outputTokens.toLocaleString() : '—';
+            c.tokTot           = d.totalTokens  != null ? d.totalTokens.toLocaleString() + ' tokens' : '—';
+            c.statusText       = 'Done';
+        }, function(err) {
+            assistantMsg.text  = (err.data && err.data.error) ? err.data.error : 'Request failed.';
+            assistantMsg.error = true;
+            c.statusText       = 'Error';
+        }).finally(function() {
+            c.busy = false;
+        });
+    };
+
+    c.keydown = function($event) {
+        if ($event.key === 'Enter' && ($event.ctrlKey || $event.metaKey)) {
+            c.send();
+        }
+    };
+}
+]]></client_script>
+        <css><![CDATA[/* ── Root ── */
+.claude-wrap {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+}
+.claude-header { text-align: center; margin-bottom: 24px; }
+.claude-header h1 { font-size: 1.6rem; font-weight: 700; color: #f0f6fc; }
+.claude-header p  { margin-top: 6px; color: #8b949e; font-size: 0.9rem; }
+.app-tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; padding: 3px 10px;
+  border-radius: 20px; background: #0e2040; border: 1px solid #1e3a5f;
+  color: #60a5fa; margin-top: 8px;
+}
+.claude-container { width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 12px; }
+
+/* ── System panel ── */
+.system-panel { background: #161b22; border: 1px solid #30363d; border-radius: 8px; overflow: hidden; }
+.system-toggle {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; background: none; border: none; cursor: pointer;
+  color: #8b949e; font-size: .82rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em;
+}
+.system-toggle:hover { color: #e6edf3; }
+.arrow { font-size: .7rem; transition: transform .2s; }
+.arrow.open { transform: rotate(180deg); }
+.system-body { display: none; padding: 0 16px 14px; }
+.system-body.open { display: block; }
+.system-body textarea { width: 100%; min-height: 90px; }
+.system-hint { margin-top: 6px; font-size: .75rem; color: #484f58; }
+
+/* ── Shared input styles ── */
+textarea, select, input[type=text] {
+  background: #0d1117; border: 1px solid #30363d; border-radius: 6px;
+  color: #e6edf3; font-family: inherit; font-size: .88rem;
+  padding: 8px 12px; outline: none; transition: border-color .2s;
+}
+textarea:focus, select:focus, input[type=text]:focus { border-color: #3b82d4; }
+textarea:disabled, select:disabled, input[type=text]:disabled { opacity: .4; cursor: not-allowed; }
+textarea { resize: vertical; line-height: 1.6; }
+
+/* ── Model / field rows ── */
+.field-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.field-row label {
+  font-size: .75rem; color: #57606a; text-transform: uppercase;
+  letter-spacing: .05em; font-weight: 600; white-space: nowrap; min-width: 110px;
+}
+.field-row select, .field-row input[type=text] { flex: 1; }
+
+/* ── Info bar ── */
+.info-bar {
+  display: flex; align-items: center; gap: 10px; background: #161b22;
+  border: 1px solid #30363d; border-radius: 8px; padding: 10px 16px;
+  font-size: .82rem; color: #8b949e; min-height: 38px; flex-wrap: wrap;
+}
+.info-label { font-weight: 600; color: #57606a; text-transform: uppercase; font-size: .7rem; letter-spacing: .05em; }
+.info-value { color: #e6edf3; font-weight: 600; }
+.divider { width: 1px; height: 16px; background: #30363d; }
+.tok-in  { color: #3b82d4; font-weight: 600; }
+.tok-out { color: #7c5cd8; font-weight: 600; }
+.tok-tot { color: #e6edf3; font-weight: 600; }
+.status-area { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.spinner {
+  display: none; width: 14px; height: 14px; border: 2px solid #3b82d4;
+  border-top-color: transparent; border-radius: 50%; animation: spin .7s linear infinite;
+}
+.spinner.active { display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Chat window ── */
+.chat-window {
+  background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+  padding: 16px; min-height: 200px; max-height: 520px; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.chat-empty { color: #484f58; font-size: .9rem; text-align: center; margin: auto; }
+
+/* ── Message bubbles ── */
+.msg { display: flex; flex-direction: column; max-width: 88%; }
+.msg.user      { align-self: flex-end;   align-items: flex-end; }
+.msg.assistant { align-self: flex-start; align-items: flex-start; }
+.bubble {
+  padding: 10px 14px; border-radius: 10px; font-size: .93rem;
+  line-height: 1.65; white-space: pre-wrap; word-wrap: break-word;
+}
+.msg.user .bubble      { background: #3b82d4; color: #fff; border-bottom-right-radius: 3px; }
+.msg.assistant .bubble { background: #21262d; color: #e6edf3; border: 1px solid #30363d; border-bottom-left-radius: 3px; }
+.msg.assistant .bubble.error { color: #f85149; }
+.msg-meta { font-size: .72rem; color: #484f58; margin-top: 4px; padding: 0 4px; }
+
+/* ── Input card ── */
+.input-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px; }
+.input-card textarea { width: 100%; min-height: 80px; }
+.actions { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-top: 10px; }
+
+/* ── Buttons ── */
+button {
+  padding: 8px 18px; border-radius: 6px; border: none;
+  font-size: .88rem; font-weight: 600; cursor: pointer; transition: opacity .2s;
+}
+button:disabled { opacity: .45; cursor: not-allowed; }
+.btn-clear { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; }
+.btn-send  { background: #3b82d4; color: #fff; }
+.btn-send:hover:not(:disabled) { opacity: .88; }
+
+.claude-footer { margin-top: 32px; font-size: .75rem; color: #484f58; }
+]]></css>
+        <description>Full-page Claude chat widget — calls the Claude Connector Scripted REST API, maintains per-session conversation history, supports system prompt, model selection, prefill and stop sequences.</description>
+        <id>claude_chat</id>
+        <internal>false</internal>
+        <link/>
+        <name>Claude Chat</name>
+        <option_schema>[]</option_schema>
+        <roles>x_146833_claudec_0.user</roles>
+        <script><![CDATA[(function() {
+    // Server script — nothing needed; all logic is in client_script + REST API
+    data.defaultModel = gs.getProperty('x_146833_claudec_0.model', 'claude-sonnet-5');
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <template><![CDATA[<div class="claude-wrap">
+  <header class="claude-header">
+    <h1>Claude Code Helper</h1>
+    <p>IBM Services Essentials · Anthropic API</p>
+    <span class="app-tag">ServiceNow Portal</span>
+  </header>
+
+  <div class="claude-container">
+
+    <!-- System prompt / settings panel -->
+    <div class="system-panel">
+      <button class="system-toggle" ng-click="c.toggleSystem()">
+        <span>⚙ System Prompt &amp; Settings</span>
+        <span class="arrow" ng-class="{open: c.systemOpen}">▾</span>
+      </button>
+      <div class="system-body" ng-class="{open: c.systemOpen}">
+        <textarea ng-model="c.systemPrompt" placeholder="You are a helpful assistant…"
+                  ng-disabled="c.controlsLocked"></textarea>
+        <div class="field-row">
+          <label for="modelSel">Model</label>
+          <select id="modelSel" ng-model="c.selectedModel"
+                  ng-options="m for m in c.models" ng-disabled="c.controlsLocked"></select>
+        </div>
+        <div class="field-row">
+          <label for="prefillIn">Prefill</label>
+          <input type="text" id="prefillIn" ng-model="c.prefill"
+                 placeholder="e.g. ```json" ng-disabled="c.controlsLocked" />
+        </div>
+        <div class="field-row">
+          <label for="stopIn">Stop Sequences</label>
+          <input type="text" id="stopIn" ng-model="c.stopSequences"
+                 placeholder="comma separated" ng-disabled="c.controlsLocked" />
+        </div>
+        <p class="system-hint">Locked once the first message is sent. Click "New Chat" to change.</p>
+      </div>
+    </div>
+
+    <!-- Info bar -->
+    <div class="info-bar">
+      <span class="info-label">Model</span>
+      <span class="info-value">{{c.modelDisplay}}</span>
+      <div class="divider"></div>
+      <span class="info-label">Tokens</span>
+      <span class="tok-in">▲ {{c.tokIn}}</span>
+      <span class="tok-out">▼ {{c.tokOut}}</span>
+      <span class="tok-tot">= {{c.tokTot}}</span>
+      <div class="status-area">
+        <div class="spinner" ng-class="{active: c.busy}"></div>
+        <span>{{c.statusText}}</span>
+      </div>
+    </div>
+
+    <!-- Chat window -->
+    <div class="chat-window" id="chatWindow">
+      <span class="chat-empty" ng-if="c.messages.length === 0">Start a conversation…</span>
+      <div class="msg {{msg.role}}" ng-repeat="msg in c.messages">
+        <div class="bubble" ng-class="{error: msg.error}">{{msg.text}}</div>
+        <div class="msg-meta">{{msg.role === 'user' ? 'You' : 'Claude'}}</div>
+      </div>
+    </div>
+
+    <!-- Input card -->
+    <div class="input-card">
+      <textarea ng-model="c.prompt" placeholder="Type a message… (Ctrl+Enter to send)"
+                ng-keydown="c.keydown($event)" ng-disabled="c.busy"></textarea>
+      <div class="actions">
+        <button class="btn-clear" ng-click="c.newChat()" ng-disabled="c.busy">New Chat</button>
+        <button class="btn-send"  ng-click="c.send()"    ng-disabled="c.busy || !c.prompt.trim()">Send ➤</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="claude-footer">Claude Code Helper · IBM Internal</footer>
+</div>
+]]></template>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>d1405d7893df8310945375dcebba1001</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Claude Chat</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sp_widget_claude_chat</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sp_widget>
+</record_update>

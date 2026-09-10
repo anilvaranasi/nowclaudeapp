@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri>/chat</default_operation_uri>
+        <http_method>POST</http_method>
+        <name>chat</name>
+        <operation_uri>/chat</operation_uri>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/chat</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>false</requires_snc_internal_role>
+        <script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    var body = request.body.data;
+    var prompt       = (body.prompt       || '').toString().trim();
+    var model        = (body.model        || '').toString().trim();
+    var systemPrompt = (body.system_prompt|| '').toString().trim();
+    var prefill      = (body.prefill      || '').toString().trim();
+    var stopRaw      = (body.stop_sequences || '').toString().trim();
+    var sessionId    = (body.session_id   || '').toString().trim();
+
+    if (!prompt) {
+        response.setStatus(400);
+        response.setBody({ error: 'Prompt cannot be empty.' });
+        return;
+    }
+    if (!sessionId) {
+        response.setStatus(400);
+        response.setBody({ error: 'session_id is required.' });
+        return;
+    }
+
+    // Parse stop sequences from comma-separated string
+    var stopSeqs = [];
+    if (stopRaw) {
+        var parts = stopRaw.split(',');
+        for (var i = 0; i < parts.length; i++) {
+            var s = parts[i].trim();
+            if (s) { stopSeqs.push(s); }
+        }
+    }
+
+    // Load conversation history from GlideRecord (sys_user_session or a custom table).
+    // We use a Glide Cache (gs.getSessionObject) scoped to the REST request session.
+    // Since REST calls are stateless, history is persisted in a sys_cache record keyed by sessionId.
+    var historyKey = 'x_146833_claudec_0.history.' + sessionId;
+    var historyJson = GlideCacheManager.get(historyKey);
+    var history = [];
+    if (historyJson) {
+        try { history = JSON.parse(historyJson); } catch(e) { history = []; }
+    }
+
+    // Append new user message
+    history.push({ role: 'user', content: prompt });
+
+    var connector = new x_146833_claudec_0.ClaudeConnector();
+    var result = connector.chat(history, {
+        model:          model,
+        system_prompt:  systemPrompt,
+        prefill:        prefill,
+        stop_sequences: stopSeqs
+    });
+
+    if (!result.success) {
+        response.setStatus(502);
+        response.setBody({ error: result.error });
+        return;
+    }
+
+    // Persist assistant reply to history
+    history.push({ role: 'assistant', content: result.text });
+    GlideCacheManager.put(historyKey, JSON.stringify(history));
+
+    response.setStatus(200);
+    response.setBody({
+        text:         result.text,
+        model:        result.model,
+        inputTokens:  result.inputTokens,
+        outputTokens: result.outputTokens,
+        totalTokens:  result.inputTokens + result.outputTokens
+    });
+
+})(request, response);
+]]></script>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>c1405d7893df8310945375dcebba1001</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>chat</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_ws_operation_claude_connector_chat</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <web_service_definition display_value="Claude Connector API">c0405d7893df8310945375dcebba1000</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

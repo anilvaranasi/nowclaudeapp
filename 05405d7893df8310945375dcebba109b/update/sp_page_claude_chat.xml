@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <description>Main page for the Claude Code Helper portal</description>
+        <draft>false</draft>
+        <id>claude_chat</id>
+        <internal>false</internal>
+        <name>Claude Chat Page</name>
+        <public>false</public>
+        <roles>x_146833_claudec_0.user</roles>
+        <short_description>Claude AI chat interface</short_description>
+        <title>Claude Code Helper</title>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>d3405d7893df8310945375dcebba1003</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Claude Chat Page</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sp_page_claude_chat</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sp_page>
+</record_update>

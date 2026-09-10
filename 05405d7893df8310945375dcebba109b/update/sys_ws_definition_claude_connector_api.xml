@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition">
+    <sys_ws_definition action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <base_uri>api/x_146833_claudec_0/claude</base_uri>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <description>Scripted REST API providing /chat and /clear endpoints for the Claude frontend UI page.</description>
+        <doc_link/>
+        <name>Claude Connector API</name>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <service_id>claude_connector_api</service_id>
+        <sys_class_name>sys_ws_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>c0405d7893df8310945375dcebba1000</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Claude Connector API</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_ws_definition_claude_connector_api</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_ws_definition>
+</record_update>
