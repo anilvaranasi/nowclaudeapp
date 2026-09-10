@@ -1,0 +1,10 @@
+{
+  "scope": "x_ibm_claudeconn",
+  "name": "Claude Connector",
+  "version": "1.0.0",
+  "vendor": "IBM",
+  "vendor_prefix": "x_ibm",
+  "short_description": "Connect ServiceNow to the Anthropic Claude API (IBM Services Essentials) with a streaming chat UI.",
+  "description": "A scoped application that replicates the claude-webapp-dotenv Python/Flask app inside ServiceNow. It provides a Service Portal widget and a UI Page with a streaming chat interface that calls the Anthropic Messages API via IBM Services Essentials, manages per-session conversation history, and supports system prompts, model selection, prefill, and stop sequences.",
+  "dependencies": []
+}

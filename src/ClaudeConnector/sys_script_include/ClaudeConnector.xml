@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sys_script_include metadata descriptor
+  Table : sys_script_include
+  Scope : x_ibm_claudeconn
+-->
+<record_update table="sys_script_include">
+  <sys_script_include action="INSERT_OR_UPDATE">
+    <access>public</access>
+    <active>true</active>
+    <api_name>x_ibm_claudeconn.ClaudeConnector</api_name>
+    <caller_access/>
+    <client_callable>false</client_callable>
+    <description>Handles outbound REST calls to the Anthropic Messages API (IBM Services Essentials) and manages per-session conversation history.</description>
+    <name>ClaudeConnector</name>
+    <script><![CDATA[
+      // loaded from ClaudeConnector.script.js
+    ]]></script>
+    <sys_class_name>sys_script_include</sys_class_name>
+    <sys_name>ClaudeConnector</sys_name>
+    <sys_scope>x_ibm_claudeconn</sys_scope>
+  </sys_script_include>
+</record_update>
