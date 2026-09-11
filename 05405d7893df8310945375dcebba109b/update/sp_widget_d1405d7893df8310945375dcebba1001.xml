@@ -40,7 +40,7 @@
     };
 
     c.newChat = function() {
-        $http.post('/api/x_146833_claudec_0/claude/clear', { session_id: c.sessionId }, { headers: reqHeaders });
+        $http.post('/api/x_146833_claudec_0/claude_connector_api/clear', { session_id: c.sessionId }, { headers: reqHeaders });
         c.messages       = [];
         c.statusText     = '';
         c.modelDisplay   = '—';
@@ -66,7 +66,7 @@
         var assistantMsg = { role: 'assistant', text: '', error: false };
         c.messages.push(assistantMsg);
 
-        $http.post('/api/x_146833_claudec_0/claude/chat', {
+        $http.post('/api/x_146833_claudec_0/claude_connector_api/chat', {
             session_id:     c.sessionId,
             prompt:         prompt,
             model:          c.selectedModel,
@@ -209,8 +209,7 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .btn-send  { background: #3b82d4; color: #fff; }
 .btn-send:hover:not(:disabled) { opacity: .88; }
 
-.claude-footer { margin-top: 32px; font-size: .75rem; color: #484f58; }
-</css>
+.claude-footer { margin-top: 32px; font-size: .75rem; color: #484f58; }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description>Full-page Claude chat widget — calls the Claude Connector Scripted REST API, maintains per-session conversation history, supports system prompt, model selection, prefill and stop sequences.</description>
