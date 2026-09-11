@@ -2,10 +2,10 @@
     <sp_portal action="INSERT_OR_UPDATE">
         <active>true</active>
         <css_variables/>
-        <default_page display_value="Claude Chat Page">d3405d7893df8310945375dcebba1003</default_page>
+        <default_page display_value="Claude Chat Page">claude_chat</default_page>
         <description>Standalone Service Portal for the Claude Code Helper chat interface</description>
         <force_https>false</force_https>
-        <homepage display_value="Claude Chat Page">d3405d7893df8310945375dcebba1003</homepage>
+        <homepage display_value="Claude Chat Page">claude_chat</homepage>
         <login_page/>
         <logo/>
         <main_menu/>

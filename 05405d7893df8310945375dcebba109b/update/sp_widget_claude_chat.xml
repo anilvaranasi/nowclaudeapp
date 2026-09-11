@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope, $http, $window) {
+        <client_script><![CDATA[function($scope, $http, $window, spUtil) {
     var c = this;
+    var token = window.NOW && window.NOW.user_token ? window.NOW.user_token : '';
+    var reqHeaders = { 'Content-Type': 'application/json', 'X-UserToken': token };
 
     // Available models (mirrors reference app)
     c.models = [
@@ -38,7 +40,7 @@
     };
 
     c.newChat = function() {
-        $http.post('/api/x_146833_claudec_0/claude/clear', { session_id: c.sessionId });
+        $http.post('/api/x_146833_claudec_0/claude/clear', { session_id: c.sessionId }, { headers: reqHeaders });
         c.messages       = [];
         c.statusText     = '';
         c.modelDisplay   = '—';
@@ -71,7 +73,7 @@
             system_prompt:  c.systemPrompt,
             prefill:        c.prefill,
             stop_sequences: c.stopSequences
-        }).then(function(resp) {
+        }, { headers: reqHeaders }).then(function(resp) {
             var d = resp.data;
             assistantMsg.text  = d.text || '';
             c.modelDisplay     = d.model        || '—';
@@ -214,7 +216,7 @@ button:disabled { opacity: .45; cursor: not-allowed; }
         <link/>
         <name>Claude Chat</name>
         <option_schema>[]</option_schema>
-        <roles>x_146833_claudec_0.user</roles>
+        <roles/>
         <script><![CDATA[(function() {
     // Server script — nothing needed; all logic is in client_script + REST API
     data.defaultModel = gs.getProperty('x_146833_claudec_0.model', 'claude-sonnet-5');
@@ -276,8 +278,8 @@ button:disabled { opacity: .45; cursor: not-allowed; }
     <!-- Chat window -->
     <div class="chat-window" id="chatWindow">
       <span class="chat-empty" ng-if="c.messages.length === 0">Start a conversation…</span>
-      <div class="msg {{msg.role}}" ng-repeat="msg in c.messages">
-        <div class="bubble" ng-class="{error: msg.error}">{{msg.text}}</div>
+      <div class="msg" ng-class="msg.role" ng-repeat="msg in c.messages">
+        <div class="bubble" ng-class="{'error': msg.error}">{{msg.text}}</div>
         <div class="msg-meta">{{msg.role === 'user' ? 'You' : 'Claude'}}</div>
       </div>
     </div>

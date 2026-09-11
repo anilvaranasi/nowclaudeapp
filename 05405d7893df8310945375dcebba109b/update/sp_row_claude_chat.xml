@@ -4,6 +4,7 @@
         <container display_value="Claude Chat Page">d4405d7893df8310945375dcebba1004</container>
         <css_class/>
         <order>100</order>
+        <sp display_value="Claude Chat Portal">d0405d7893df8310945375dcebba1000</sp>
         <sys_class_name>sp_row</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-10 16:30:00</sys_created_on>
