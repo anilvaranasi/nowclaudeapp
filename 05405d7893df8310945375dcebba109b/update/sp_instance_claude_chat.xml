@@ -8,7 +8,9 @@
         <hide_on_xs>false</hide_on_xs>
         <options>{}</options>
         <order>100</order>
+        <sp display_value="Claude Chat Portal">d0405d7893df8310945375dcebba1000</sp>
         <widget display_value="Claude Chat">d1405d7893df8310945375dcebba1001</widget>
+        <widget_id>claude_chat</widget_id>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-10 16:30:00</sys_created_on>
