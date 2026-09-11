@@ -40,7 +40,7 @@
     };
 
     c.newChat = function() {
-        $http.post('/api/x_146833_claudec_0/claude/clear', { session_id: c.sessionId }, { headers: reqHeaders });
+        $http.post('/api/x_146833_claudec_0/claude_connector_api/clear', { session_id: c.sessionId }, { headers: reqHeaders });
         c.messages       = [];
         c.statusText     = '';
         c.modelDisplay   = '—';
@@ -66,7 +66,7 @@
         var assistantMsg = { role: 'assistant', text: '', error: false };
         c.messages.push(assistantMsg);
 
-        $http.post('/api/x_146833_claudec_0/claude/chat', {
+        $http.post('/api/x_146833_claudec_0/claude_connector_api/chat', {
             session_id:     c.sessionId,
             prompt:         prompt,
             model:          c.selectedModel,
