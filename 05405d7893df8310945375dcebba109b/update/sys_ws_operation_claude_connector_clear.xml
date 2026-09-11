@@ -3,10 +3,8 @@
         <active>true</active>
         <consumes>application/json</consumes>
         <consumes_customized>false</consumes_customized>
-        <default_operation_uri>/clear</default_operation_uri>
         <http_method>POST</http_method>
         <name>clear</name>
-        <operation_uri>/clear</operation_uri>
         <produces>application/json</produces>
         <produces_customized>false</produces_customized>
         <relative_path>/clear</relative_path>
