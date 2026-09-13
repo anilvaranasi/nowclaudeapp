@@ -35,6 +35,39 @@
         });
     }
 
+    // Helper to unwrap ServiceNow REST response — body may be {result: {...}} or plain {...}
+    function unwrap(data) {
+        if (data && data.result && typeof data.result === 'object') {
+            return data.result;
+        }
+        return data || {};
+    }
+
+    // Helper to extract error message from ALL ServiceNow error response formats
+    function extractError(err) {
+        var d = err && err.data;
+        var status = err && err.status;
+        if (!d) return 'No response from server (HTTP ' + (status || '?') + ').';
+
+        // If d is a string, try parsing it as JSON
+        if (typeof d === 'string') {
+            try { d = JSON.parse(d); } catch (e) { return d; }
+        }
+
+        // Platform error: {error: {message: '...', detail: '...'}}
+        if (d.error && typeof d.error === 'object' && d.error.message) {
+            return d.error.message + (d.error.detail ? ' — ' + d.error.detail : '');
+        }
+        // Our custom error via result wrapper: {result: {error: '...'}}
+        if (d.result && d.result.error) return d.result.error;
+        // Framework error: {message: '...', detail: ...}
+        if (d.message) return d.message + (d.detail ? ' — ' + d.detail : '');
+        // Direct error string: {error: '...'}
+        if (d.error && typeof d.error === 'string') return d.error;
+        // Fallback with status
+        return 'Request failed (HTTP ' + (status || '?') + '). Response: ' + JSON.stringify(d).substring(0, 200);
+    }
+
     c.toggleSystem = function() {
         c.systemOpen = !c.systemOpen;
     };
@@ -74,7 +107,14 @@
             prefill:        c.prefill,
             stop_sequences: c.stopSequences
         }, { headers: reqHeaders }).then(function(resp) {
-            var d = resp.data;
+            var d = unwrap(resp.data);
+            // Check if the response itself contains an error
+            if (d.error) {
+                assistantMsg.text = d.error;
+                assistantMsg.error = true;
+                c.statusText = 'Error';
+                return;
+            }
             assistantMsg.text  = d.text || '';
             c.modelDisplay     = d.model        || '—';
             c.tokIn            = d.inputTokens  != null ? d.inputTokens.toLocaleString()  : '—';
@@ -82,7 +122,7 @@
             c.tokTot           = d.totalTokens  != null ? d.totalTokens.toLocaleString() + ' tokens' : '—';
             c.statusText       = 'Done';
         }, function(err) {
-            assistantMsg.text  = (err.data && err.data.error) ? err.data.error : 'Request failed.';
+            assistantMsg.text  = extractError(err);
             assistantMsg.error = true;
             c.statusText       = 'Error';
         }).finally(function() {
@@ -231,17 +271,17 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 ]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-11 06:45:34</sys_created_on>
+        <sys_created_by/>
+        <sys_created_on/>
         <sys_id>d1405d7893df8310945375dcebba1001</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Claude Chat</sys_name>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_package/>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
         <sys_update_name>sp_widget_d1405d7893df8310945375dcebba1001</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-11 06:45:34</sys_updated_on>
+        <sys_updated_on>2026-09-11 07:28:09</sys_updated_on>
         <template><![CDATA[<div class="claude-wrap">
   <header class="claude-header">
     <h1>Claude Code Helper</h1>

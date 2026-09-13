@@ -3,8 +3,119 @@
         <active>true</active>
         <consumes>application/json</consumes>
         <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
         <http_method>POST</http_method>
         <name>chat</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    try {
+        // Parse request body — try multiple approaches for compatibility
+        var body;
+        try {
+            body = request.body.data;
+        } catch (e1) {
+            try {
+                body = JSON.parse(request.body.dataString);
+            } catch (e2) {
+                body = {};
+            }
+        }
+        if (!body) { body = {}; }
+
+        var sessionId    = body.session_id    ? body.session_id + ''    : 'default';
+        var prompt       = body.prompt        ? body.prompt + ''        : '';
+        var model        = body.model         ? body.model + ''         : '';
+        var systemPrompt = body.system_prompt ? body.system_prompt + '' : '';
+        var prefill      = body.prefill       ? body.prefill + ''       : '';
+        var stopSeqsRaw  = body.stop_sequences ? body.stop_sequences + '' : '';
+
+        if (!prompt) {
+            response.setStatus(400);
+            response.setBody({ error: 'prompt is required' });
+            return;
+        }
+
+        // Get existing conversation history from session
+        var historyKey = 'claude_history_' + sessionId;
+        var historyStr = '';
+        try {
+            historyStr = gs.getSession().getClientData(historyKey) || '[]';
+        } catch (e) {
+            historyStr = '[]';
+        }
+
+        var messages;
+        try {
+            messages = JSON.parse(historyStr);
+        } catch (e) {
+            messages = [];
+        }
+        if (!Array.isArray(messages)) { messages = []; }
+
+        // Add user message
+        messages.push({ role: 'user', content: prompt });
+
+        // Parse stop sequences (comma-separated string)
+        var stopArr = [];
+        if (stopSeqsRaw) {
+            var parts = (stopSeqsRaw).split(',');
+            for (var i = 0; i < parts.length; i++) {
+                var s = parts[i].trim();
+                if (s) { stopArr.push(s); }
+            }
+        }
+
+        // Call Claude via the ClaudeConnector script include
+        var connector;
+        try {
+            connector = new x_146833_claudec_0.ClaudeConnector();
+        } catch (e) {
+            response.setStatus(500);
+            response.setBody({ error: 'Failed to load ClaudeConnector: ' + e.toString() });
+            return;
+        }
+
+        var result;
+        try {
+            result = connector.chat(messages, {
+                model: model,
+                system_prompt: systemPrompt,
+                prefill: prefill,
+                stop_sequences: stopArr
+            });
+        } catch (e) {
+            response.setStatus(500);
+            response.setBody({ error: 'ClaudeConnector.chat() threw: ' + e.toString() });
+            return;
+        }
+
+        if (result && result.success) {
+            // Add assistant reply to conversation history
+            messages.push({ role: 'assistant', content: result.text });
+            try {
+                gs.getSession().putClientData(historyKey, JSON.stringify(messages));
+            } catch (e) {
+                // Session storage failed — non-fatal, continue
+            }
+
+            response.setBody({
+                text: result.text,
+                model: result.model,
+                inputTokens: result.inputTokens,
+                outputTokens: result.outputTokens,
+                totalTokens: (result.inputTokens || 0) + (result.outputTokens || 0)
+            });
+        } else {
+            response.setStatus(500);
+            response.setBody({ error: (result && result.error) ? result.error : 'Unknown error from ClaudeConnector' });
+        }
+    } catch (ex) {
+        response.setStatus(500);
+        response.setBody({ error: 'Unhandled exception: ' + ex.toString() });
+    }
+})(request, response);
+]]></operation_script>
+        <operation_uri>/api/x_146833_claudec_0/claude_connector_api/chat</operation_uri>
         <produces>application/json</produces>
         <produces_customized>false</produces_customized>
         <relative_path>/chat</relative_path>
@@ -12,91 +123,20 @@
         <requires_acl_authorization>true</requires_acl_authorization>
         <requires_authentication>true</requires_authentication>
         <requires_snc_internal_role>false</requires_snc_internal_role>
-        <script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
-
-    var body = request.body.data;
-    var prompt       = (body.prompt       || '').toString().trim();
-    var model        = (body.model        || '').toString().trim();
-    var systemPrompt = (body.system_prompt|| '').toString().trim();
-    var prefill      = (body.prefill      || '').toString().trim();
-    var stopRaw      = (body.stop_sequences || '').toString().trim();
-    var sessionId    = (body.session_id   || '').toString().trim();
-
-    if (!prompt) {
-        response.setStatus(400);
-        response.setBody({ error: 'Prompt cannot be empty.' });
-        return;
-    }
-    if (!sessionId) {
-        response.setStatus(400);
-        response.setBody({ error: 'session_id is required.' });
-        return;
-    }
-
-    // Parse stop sequences from comma-separated string
-    var stopSeqs = [];
-    if (stopRaw) {
-        var parts = stopRaw.split(',');
-        for (var i = 0; i < parts.length; i++) {
-            var s = parts[i].trim();
-            if (s) { stopSeqs.push(s); }
-        }
-    }
-
-    // Load conversation history from GlideRecord (sys_user_session or a custom table).
-    // We use a Glide Cache (gs.getSessionObject) scoped to the REST request session.
-    // Since REST calls are stateless, history is persisted in a sys_cache record keyed by sessionId.
-    var historyKey = 'x_146833_claudec_0.history.' + sessionId;
-    var historyJson = GlideCacheManager.get(historyKey);
-    var history = [];
-    if (historyJson) {
-        try { history = JSON.parse(historyJson); } catch(e) { history = []; }
-    }
-
-    // Append new user message
-    history.push({ role: 'user', content: prompt });
-
-    var connector = new x_146833_claudec_0.ClaudeConnector();
-    var result = connector.chat(history, {
-        model:          model,
-        system_prompt:  systemPrompt,
-        prefill:        prefill,
-        stop_sequences: stopSeqs
-    });
-
-    if (!result.success) {
-        response.setStatus(502);
-        response.setBody({ error: result.error });
-        return;
-    }
-
-    // Persist assistant reply to history
-    history.push({ role: 'assistant', content: result.text });
-    GlideCacheManager.put(historyKey, JSON.stringify(history));
-
-    response.setStatus(200);
-    response.setBody({
-        text:         result.text,
-        model:        result.model,
-        inputTokens:  result.inputTokens,
-        outputTokens: result.outputTokens,
-        totalTokens:  result.inputTokens + result.outputTokens
-    });
-
-})(request, response);
-]]></script>
+        <short_description/>
+        <support_trailing_slash>false</support_trailing_slash>
         <sys_class_name>sys_ws_operation</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_created_by/>
+        <sys_created_on/>
         <sys_id>c1405d7893df8310945375dcebba1001</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>chat</sys_name>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_package/>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
         <sys_update_name>sys_ws_operation_claude_connector_chat</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <sys_updated_on>2026-09-11 07:28:09</sys_updated_on>
         <web_service_definition display_value="Claude Connector API">c0405d7893df8310945375dcebba1000</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>
