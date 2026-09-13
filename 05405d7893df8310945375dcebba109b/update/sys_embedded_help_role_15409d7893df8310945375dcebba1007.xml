@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_146833_claudec_0.user" name="x_146833_claudec_0.user">51409d7893df8310945375dcebba1005</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:22:30</sys_created_on>
+        <sys_id>15409d7893df8310945375dcebba1007</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>51409d7893df8310945375dcebba1005</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_embedded_help_role_15409d7893df8310945375dcebba1007</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:22:30</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>
