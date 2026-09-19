@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <http_method>POST</http_method>
+        <name>history</name>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/history</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>false</requires_snc_internal_role>
+        <script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    var body      = request.body.data;
+    var sessionId = (body.session_id || '').toString().trim();
+
+    if (!sessionId) {
+        response.setStatus(400);
+        response.setBody({ error: 'session_id is required.' });
+        return;
+    }
+
+    var logger  = new x_146833_claudec_0.ClaudeRequestLogger();
+    var records = logger.getSessionHistory(sessionId);
+
+    // Compute session-level aggregates
+    var totalIn  = 0;
+    var totalOut = 0;
+    var totalMs  = 0;
+    for (var i = 0; i < records.length; i++) {
+        totalIn  += records[i].input_tokens;
+        totalOut += records[i].output_tokens;
+        totalMs  += records[i].duration_ms;
+    }
+
+    response.setStatus(200);
+    response.setBody({
+        session_id:    sessionId,
+        request_count: records.length,
+        total_input_tokens:  totalIn,
+        total_output_tokens: totalOut,
+        total_duration_ms:   totalMs,
+        requests: records
+    });
+
+})(request, response);
+]]></script>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>c3405d7893df8310945375dcebba1003</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>history</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_ws_operation_claude_connector_history</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <web_service_definition display_value="Claude Connector API">c0405d7893df8310945375dcebba1000</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <http_method>GET</http_method>
+        <name>models</name>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/models</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>false</requires_snc_internal_role>
+        <script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    var defaultModel = gs.getProperty('x_146833_claudec_0.model', 'claude-sonnet-5');
+    var defaultMaxTokens = parseInt(gs.getProperty('x_146833_claudec_0.max_tokens', '4096'), 10);
+
+    var models = [
+        {
+            id:           'claude-sonnet-5',
+            display_name: 'Claude Sonnet 5',
+            description:  'Latest Sonnet model — best balance of intelligence and speed.',
+            context_window: 200000,
+            max_output_tokens: 64000,
+            recommended_for: ['chat', 'code', 'analysis']
+        },
+        {
+            id:           'claude-opus-4-8',
+            display_name: 'Claude Opus 4.8',
+            description:  'Most capable model — best for complex multi-step reasoning tasks.',
+            context_window: 200000,
+            max_output_tokens: 32000,
+            recommended_for: ['deep reasoning', 'research', 'long-form writing']
+        },
+        {
+            id:           'claude-haiku-4-5',
+            display_name: 'Claude Haiku 4.5',
+            description:  'Fastest and most compact model — best for high-volume, low-latency tasks.',
+            context_window: 200000,
+            max_output_tokens: 8096,
+            recommended_for: ['classification', 'summarisation', 'quick lookups']
+        }
+    ];
+
+    response.setStatus(200);
+    response.setBody({
+        default_model:      defaultModel,
+        default_max_tokens: defaultMaxTokens,
+        models:             models
+    });
+
+})(request, response);
+]]></script>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>c4405d7893df8310945375dcebba1004</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>models</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_ws_operation_claude_connector_models</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <web_service_definition display_value="Claude Connector API">c0405d7893df8310945375dcebba1000</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

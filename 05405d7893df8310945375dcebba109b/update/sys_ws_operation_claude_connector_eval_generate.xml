@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <http_method>POST</http_method>
+        <name>eval_generate</name>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/eval/generate</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>false</requires_snc_internal_role>
+        <script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    /*
+     * POST /eval/generate
+     *
+     * Body:
+     *   task_description   string  required  What the prompt is meant to accomplish.
+     *   prompt_inputs_spec object  required  { "key": "description", ... } of template inputs.
+     *   num_cases          number  optional  Number of test cases to generate (default 3).
+     *
+     * Response:
+     *   { dataset_id, case_count, task_description }
+     */
+
+    var body = request.body.data;
+    var taskDescription  = (body.task_description   || '').toString().trim();
+    var promptInputsSpec = body.prompt_inputs_spec  || {};
+    var numCases         = parseInt(body.num_cases  || 3, 10);
+
+    if (!taskDescription) {
+        response.setStatus(400);
+        response.setBody({ error: 'task_description is required.' });
+        return;
+    }
+    if (typeof promptInputsSpec !== 'object') {
+        response.setStatus(400);
+        response.setBody({ error: 'prompt_inputs_spec must be a JSON object.' });
+        return;
+    }
+    if (isNaN(numCases) || numCases < 1) { numCases = 3; }
+    if (numCases > 10)                   { numCases = 10; }
+
+    var evaluator = new x_146833_claudec_0.ClaudePromptEvaluator();
+    var datasetId = evaluator.generateDataset(taskDescription, promptInputsSpec, numCases);
+
+    response.setStatus(200);
+    response.setBody({
+        dataset_id:       datasetId,
+        case_count:       numCases,
+        task_description: taskDescription
+    });
+
+})(request, response);
+]]></script>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>c5405d7893df8310945375dcebba1005</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>eval_generate</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_ws_operation_claude_connector_eval_generate</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <web_service_definition display_value="Claude Connector API">c0405d7893df8310945375dcebba1000</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
