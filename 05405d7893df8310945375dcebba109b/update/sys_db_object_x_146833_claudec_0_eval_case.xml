@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update_set>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     Eval case staging table: x_146833_claudec_0_eval_case
+     One row per test case in a dataset. Reused for both dataset generation
+     and evaluation run results.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- Table definition -->
+<record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>false</create_access_controls>
+        <delete_access>false</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>Claude Eval Case</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_146833_claudec_0_eval_case</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>false</read_access>
+        <scriptable_table>false</scriptable_table>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>e2405d7893df8310945375dcebba1002</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_db_object_x_146833_claudec_0_eval_case</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role/>
+        <ws_access>false</ws_access>
+    </sys_db_object>
+</record_update>
+
+<!-- dataset_id — groups test cases belonging to the same dataset -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Dataset ID</column_label>
+        <comments>UUID grouping all cases in the same generated dataset.</comments>
+        <default_value/>
+        <element>dataset_id</element>
+        <internal_type>string</internal_type>
+        <max_length>128</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g1405d7893df8310945375dcebba1001</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.dataset_id</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_dataset_id</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- task_description -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Task Description</column_label>
+        <comments>The overall goal of the prompt being evaluated.</comments>
+        <default_value/>
+        <element>task_description</element>
+        <internal_type>string</internal_type>
+        <max_length>2000</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g2405d7893df8310945375dcebba1002</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.task_description</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_task_description</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- scenario (the idea used to generate this case) -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Scenario</column_label>
+        <comments>Brief description of the idea behind this test case.</comments>
+        <default_value/>
+        <element>scenario</element>
+        <internal_type>string</internal_type>
+        <max_length>1000</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g3405d7893df8310945375dcebba1003</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.scenario</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_scenario</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- prompt_inputs_json — JSON string of { key: value } inputs -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Prompt Inputs (JSON)</column_label>
+        <comments>JSON object of the variable inputs for this test case.</comments>
+        <default_value/>
+        <element>prompt_inputs_json</element>
+        <internal_type>string</internal_type>
+        <max_length>4000</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g4405d7893df8310945375dcebba1004</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.prompt_inputs_json</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_prompt_inputs_json</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- solution_criteria_json — JSON array of criterion strings -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Solution Criteria (JSON)</column_label>
+        <comments>JSON array of strings describing what a good response should do.</comments>
+        <default_value/>
+        <element>solution_criteria_json</element>
+        <internal_type>string</internal_type>
+        <max_length>2000</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g5405d7893df8310945375dcebba1005</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.solution_criteria_json</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_solution_criteria_json</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- output — the actual model output produced during evaluation -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Output</column_label>
+        <comments>The model output produced when this test case was run.</comments>
+        <default_value/>
+        <element>output</element>
+        <internal_type>string</internal_type>
+        <max_length>8000</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g6405d7893df8310945375dcebba1006</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.output</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_output</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- score: integer 1–10 -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Score</column_label>
+        <comments>Numeric score 1–10 assigned by the grader model.</comments>
+        <default_value>0</default_value>
+        <element>score</element>
+        <internal_type>integer</internal_type>
+        <max_length>40</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g7405d7893df8310945375dcebba1007</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.score</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_score</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- reasoning — grader's explanation -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Reasoning</column_label>
+        <comments>The grader model's explanation for the assigned score.</comments>
+        <default_value/>
+        <element>reasoning</element>
+        <internal_type>string</internal_type>
+        <max_length>2000</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g8405d7893df8310945375dcebba1008</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.reasoning</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_reasoning</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- run_id — optional: groups cases that were run together in one evaluation run -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Run ID</column_label>
+        <comments>UUID set when this case is part of an evaluation run (null for dataset-only records).</comments>
+        <default_value/>
+        <element>run_id</element>
+        <internal_type>string</internal_type>
+        <max_length>128</max_length>
+        <name>x_146833_claudec_0_eval_case</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>g9405d7893df8310945375dcebba1009</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_eval_case.run_id</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_eval_case_run_id</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+</record_update_set>

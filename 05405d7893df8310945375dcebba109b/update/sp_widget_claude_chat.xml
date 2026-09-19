@@ -6,16 +6,17 @@
     var token = window.NOW && window.NOW.user_token ? window.NOW.user_token : '';
     var reqHeaders = { 'Content-Type': 'application/json', 'X-UserToken': token };
 
-    // Available models (mirrors reference app)
     c.models = [
         'claude-sonnet-5',
         'claude-opus-4-8',
         'claude-haiku-4-5'
     ];
     c.selectedModel  = c.models[0];
-    c.systemPrompt   = '';
+    c.systemPrompt   = 'You are a helpful assistant with access to tools: get_current_datetime, add_duration_to_datetime, set_reminder, and batch_tool. Use them when answering questions about dates, times, or reminders.';
     c.prefill        = '';
     c.stopSequences  = '';
+    c.maxTokens      = '';
+    c.temperature    = '';
     c.prompt         = '';
     c.messages       = [];
     c.busy           = false;
@@ -24,6 +25,9 @@
     c.tokIn          = '—';
     c.tokOut         = '—';
     c.tokTot         = '—';
+    c.sessionTokIn   = 0;
+    c.sessionTokOut  = 0;
+    c.requestCount   = 0;
     c.controlsLocked = false;
     c.systemOpen     = false;
     c.sessionId      = _generateId();
@@ -47,6 +51,9 @@
         c.tokIn          = '—';
         c.tokOut         = '—';
         c.tokTot         = '—';
+        c.sessionTokIn   = 0;
+        c.sessionTokOut  = 0;
+        c.requestCount   = 0;
         c.controlsLocked = false;
         c.prompt         = '';
         c.sessionId      = _generateId();
@@ -62,25 +69,38 @@
         c.statusText     = 'Thinking…';
         c.controlsLocked = true;
 
-        // Placeholder for streaming assistant reply
         var assistantMsg = { role: 'assistant', text: '', error: false };
         c.messages.push(assistantMsg);
 
-        $http.post('/api/x_146833_claudec_0/claude_connector_api/chat', {
+        var payload = {
             session_id:     c.sessionId,
             prompt:         prompt,
             model:          c.selectedModel,
             system_prompt:  c.systemPrompt,
             prefill:        c.prefill,
             stop_sequences: c.stopSequences
-        }, { headers: reqHeaders }).then(function(resp) {
+        };
+        if (c.maxTokens && parseInt(c.maxTokens, 10) > 0) {
+            payload.max_tokens = parseInt(c.maxTokens, 10);
+        }
+        if (c.temperature !== '' && !isNaN(parseFloat(c.temperature))) {
+            payload.temperature = parseFloat(c.temperature);
+        }
+
+        $http.post('/api/x_146833_claudec_0/claude_connector_api/chat', payload,
+                   { headers: reqHeaders }).then(function(resp) {
             var d = resp.data;
-            assistantMsg.text  = d.text || '';
-            c.modelDisplay     = d.model        || '—';
-            c.tokIn            = d.inputTokens  != null ? d.inputTokens.toLocaleString()  : '—';
-            c.tokOut           = d.outputTokens != null ? d.outputTokens.toLocaleString() : '—';
-            c.tokTot           = d.totalTokens  != null ? d.totalTokens.toLocaleString() + ' tokens' : '—';
-            c.statusText       = 'Done';
+            assistantMsg.text = d.text || '';
+            c.modelDisplay    = d.model        || '—';
+            var inTok  = d.inputTokens  != null ? d.inputTokens  : 0;
+            var outTok = d.outputTokens != null ? d.outputTokens : 0;
+            c.tokIn    = inTok.toLocaleString();
+            c.tokOut   = outTok.toLocaleString();
+            c.tokTot   = d.totalTokens  != null ? d.totalTokens.toLocaleString() + ' tokens' : '—';
+            c.sessionTokIn  += inTok;
+            c.sessionTokOut += outTok;
+            c.requestCount  += 1;
+            c.statusText    = 'Done · ' + c.requestCount + ' call' + (c.requestCount !== 1 ? 's' : '') + ' this session';
         }, function(err) {
             assistantMsg.text  = (err.data && err.data.error) ? err.data.error : 'Request failed.';
             assistantMsg.error = true;
@@ -95,6 +115,9 @@
             c.send();
         }
     };
+
+    c.sessionTokInFmt  = function() { return c.sessionTokIn  ? c.sessionTokIn.toLocaleString()  : '0'; };
+    c.sessionTokOutFmt = function() { return c.sessionTokOut ? c.sessionTokOut.toLocaleString() : '0'; };
 }
 ]]></client_script>
         <css><![CDATA[/* ── Root ── */
@@ -117,7 +140,41 @@
   border-radius: 20px; background: #0e2040; border: 1px solid #1e3a5f;
   color: #60a5fa; margin-top: 8px;
 }
-.claude-container { width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 12px; }
+.claude-container { width: 100%; max-width: 800px; display: flex; flex-direction: column; gap: 12px; }
+
+/* ── Tool badges ── */
+.tools-bar {
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+  padding: 9px 14px;
+}
+.tools-bar-label {
+  font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: #57606a; margin-right: 4px; white-space: nowrap;
+}
+.tool-badge {
+  font-size: .72rem; font-weight: 600; padding: 2px 9px; border-radius: 12px;
+  border: 1px solid; white-space: nowrap;
+}
+.tool-badge.dt  { color: #3b82d4; border-color: #1e3a5f; background: #0e2040; }
+.tool-badge.dur { color: #34d399; border-color: #064e3b; background: #022c22; }
+.tool-badge.rem { color: #f59e0b; border-color: #78350f; background: #1c0a00; }
+.tool-badge.bat { color: #a78bfa; border-color: #4c1d95; background: #1e0a3c; }
+
+/* ── Session stats bar ── */
+.session-bar {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+  padding: 8px 14px; font-size: .78rem; color: #8b949e;
+}
+.session-bar .s-label {
+  font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: #484f58;
+}
+.session-bar .s-val { font-weight: 700; color: #e6edf3; }
+.session-bar .s-in  { color: #3b82d4; font-weight: 700; }
+.session-bar .s-out { color: #7c5cd8; font-weight: 700; }
+.session-bar .s-div { width: 1px; height: 14px; background: #30363d; }
 
 /* ── System panel ── */
 .system-panel { background: #161b22; border: 1px solid #30363d; border-radius: 8px; overflow: hidden; }
@@ -135,13 +192,13 @@
 .system-hint { margin-top: 6px; font-size: .75rem; color: #484f58; }
 
 /* ── Shared input styles ── */
-textarea, select, input[type=text] {
+textarea, select, input[type=text], input[type=number] {
   background: #0d1117; border: 1px solid #30363d; border-radius: 6px;
   color: #e6edf3; font-family: inherit; font-size: .88rem;
   padding: 8px 12px; outline: none; transition: border-color .2s;
 }
-textarea:focus, select:focus, input[type=text]:focus { border-color: #3b82d4; }
-textarea:disabled, select:disabled, input[type=text]:disabled { opacity: .4; cursor: not-allowed; }
+textarea:focus, select:focus, input[type=text]:focus, input[type=number]:focus { border-color: #3b82d4; }
+textarea:disabled, select:disabled, input[type=text]:disabled, input[type=number]:disabled { opacity: .4; cursor: not-allowed; }
 textarea { resize: vertical; line-height: 1.6; }
 
 /* ── Model / field rows ── */
@@ -150,7 +207,7 @@ textarea { resize: vertical; line-height: 1.6; }
   font-size: .75rem; color: #57606a; text-transform: uppercase;
   letter-spacing: .05em; font-weight: 600; white-space: nowrap; min-width: 110px;
 }
-.field-row select, .field-row input[type=text] { flex: 1; }
+.field-row select, .field-row input[type=text], .field-row input[type=number] { flex: 1; }
 
 /* ── Info bar ── */
 .info-bar {
@@ -210,7 +267,7 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 
 .claude-footer { margin-top: 32px; font-size: .75rem; color: #484f58; }
 ]]></css>
-        <description>Full-page Claude chat widget — calls the Claude Connector Scripted REST API, maintains per-session conversation history, supports system prompt, model selection, prefill and stop sequences.</description>
+        <description>Full-page Claude chat widget — agentic tool-use, staging table logging, per-session token stats, configurable max_tokens. Calls Claude Connector Scripted REST API.</description>
         <id>claude_chat</id>
         <internal>false</internal>
         <link/>
@@ -218,8 +275,8 @@ button:disabled { opacity: .45; cursor: not-allowed; }
         <option_schema>[]</option_schema>
         <roles/>
         <script><![CDATA[(function() {
-    // Server script — nothing needed; all logic is in client_script + REST API
     data.defaultModel = gs.getProperty('x_146833_claudec_0.model', 'claude-sonnet-5');
+    data.defaultMaxTokens = gs.getProperty('x_146833_claudec_0.max_tokens', '4096');
 })();
 ]]></script>
         <servicenow>false</servicenow>
@@ -232,6 +289,25 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 
   <div class="claude-container">
 
+    <!-- Tool badges -->
+    <div class="tools-bar">
+      <span class="tools-bar-label">Tools</span>
+      <span class="tool-badge dt">get_current_datetime</span>
+      <span class="tool-badge dur">add_duration_to_datetime</span>
+      <span class="tool-badge rem">set_reminder</span>
+      <span class="tool-badge bat">batch_tool</span>
+    </div>
+
+    <!-- Session token stats -->
+    <div class="session-bar">
+      <span class="s-label">Session</span>
+      <span class="s-val">{{c.requestCount}} call{{c.requestCount !== 1 ? 's' : ''}}</span>
+      <div class="s-div"></div>
+      <span class="s-label">Cumulative</span>
+      <span class="s-in">▲ {{c.sessionTokInFmt()}} in</span>
+      <span class="s-out">▼ {{c.sessionTokOutFmt()}} out</span>
+    </div>
+
     <!-- System prompt / settings panel -->
     <div class="system-panel">
       <button class="system-toggle" ng-click="c.toggleSystem()">
@@ -239,12 +315,23 @@ button:disabled { opacity: .45; cursor: not-allowed; }
         <span class="arrow" ng-class="{open: c.systemOpen}">▾</span>
       </button>
       <div class="system-body" ng-class="{open: c.systemOpen}">
-        <textarea ng-model="c.systemPrompt" placeholder="You are a helpful assistant…"
+        <textarea ng-model="c.systemPrompt"
+                  placeholder="You are a helpful assistant with access to tools: get_current_datetime, add_duration_to_datetime, set_reminder, and batch_tool."
                   ng-disabled="c.controlsLocked"></textarea>
         <div class="field-row">
           <label for="modelSel">Model</label>
           <select id="modelSel" ng-model="c.selectedModel"
                   ng-options="m for m in c.models" ng-disabled="c.controlsLocked"></select>
+        </div>
+        <div class="field-row">
+          <label for="maxTokIn">Max Tokens</label>
+          <input type="number" id="maxTokIn" ng-model="c.maxTokens"
+                 placeholder="default from property" ng-disabled="c.controlsLocked" min="1" max="100000" />
+        </div>
+        <div class="field-row">
+          <label for="tempIn">Temperature</label>
+          <input type="number" id="tempIn" ng-model="c.temperature"
+                 placeholder="0.0 – 1.0 (default 1.0)" ng-disabled="c.controlsLocked" min="0" max="1" step="0.1" />
         </div>
         <div class="field-row">
           <label for="prefillIn">Prefill</label>
@@ -256,16 +343,16 @@ button:disabled { opacity: .45; cursor: not-allowed; }
           <input type="text" id="stopIn" ng-model="c.stopSequences"
                  placeholder="comma separated" ng-disabled="c.controlsLocked" />
         </div>
-        <p class="system-hint">Locked once the first message is sent. Click "New Chat" to change.</p>
+        <p class="system-hint">Settings are locked once the first message is sent. Click "New Chat" to change.</p>
       </div>
     </div>
 
-    <!-- Info bar -->
+    <!-- Info bar (last call) -->
     <div class="info-bar">
       <span class="info-label">Model</span>
       <span class="info-value">{{c.modelDisplay}}</span>
       <div class="divider"></div>
-      <span class="info-label">Tokens</span>
+      <span class="info-label">Last call</span>
       <span class="tok-in">▲ {{c.tokIn}}</span>
       <span class="tok-out">▼ {{c.tokOut}}</span>
       <span class="tok-tot">= {{c.tokTot}}</span>

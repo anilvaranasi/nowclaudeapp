@@ -22,17 +22,33 @@
         }
         if (!body) { body = {}; }
 
-        var sessionId    = body.session_id    ? body.session_id + ''    : 'default';
-        var prompt       = body.prompt        ? body.prompt + ''        : '';
-        var model        = body.model         ? body.model + ''         : '';
-        var systemPrompt = body.system_prompt ? body.system_prompt + '' : '';
-        var prefill      = body.prefill       ? body.prefill + ''       : '';
-        var stopSeqsRaw  = body.stop_sequences ? body.stop_sequences + '' : '';
+        var sessionId      = body.session_id      ? body.session_id + ''      : 'default';
+        var prompt         = body.prompt           ? body.prompt + ''          : '';
+        var model          = body.model            ? body.model + ''           : '';
+        var systemPrompt   = body.system_prompt    ? body.system_prompt + ''   : '';
+        var prefill        = body.prefill          ? body.prefill + ''         : '';
+        var stopSeqsRaw    = body.stop_sequences   ? body.stop_sequences + ''  : '';
+        var maxTokensRaw   = body.max_tokens       ? body.max_tokens + ''      : '';
+        var temperatureRaw = body.temperature      ? body.temperature + ''     : '';
 
         if (!prompt) {
             response.setStatus(400);
             response.setBody({ error: 'prompt is required' });
             return;
+        }
+
+        // Optional per-request max_tokens override
+        var maxTokens = 0;
+        if (maxTokensRaw) {
+            var parsedTok = parseInt(maxTokensRaw, 10);
+            if (!isNaN(parsedTok) && parsedTok > 0) { maxTokens = parsedTok; }
+        }
+
+        // Optional temperature override (0.0 – 1.0)
+        var temperature = null;
+        if (temperatureRaw !== '') {
+            var parsedTemp = parseFloat(temperatureRaw);
+            if (!isNaN(parsedTemp) && parsedTemp >= 0 && parsedTemp <= 1) { temperature = parsedTemp; }
         }
 
         // Get existing conversation history from session
@@ -65,7 +81,7 @@
             }
         }
 
-        // Call Claude via the ClaudeConnector script include
+        // Call Claude via the ClaudeConnector script include (agentic tool-use loop)
         var connector;
         try {
             connector = new x_146833_claudec_0.ClaudeConnector();
@@ -75,17 +91,23 @@
             return;
         }
 
+        var callOpts = {
+            model:          model,
+            system_prompt:  systemPrompt,
+            stop_sequences: stopArr,
+            // Logging context for ClaudeRequestLogger staging table
+            session_id:     sessionId,
+            prompt:         prompt
+        };
+        if (maxTokens > 0)       { callOpts.max_tokens  = maxTokens; }
+        if (temperature != null) { callOpts.temperature = temperature; }
+
         var result;
         try {
-            result = connector.chat(messages, {
-                model: model,
-                system_prompt: systemPrompt,
-                prefill: prefill,
-                stop_sequences: stopArr
-            });
+            result = connector.chatWithTools(messages, callOpts);
         } catch (e) {
             response.setStatus(500);
-            response.setBody({ error: 'ClaudeConnector.chat() threw: ' + e.toString() });
+            response.setBody({ error: 'ClaudeConnector.chatWithTools() threw: ' + e.toString() });
             return;
         }
 
@@ -99,11 +121,12 @@
             }
 
             response.setBody({
-                text: result.text,
-                model: result.model,
-                inputTokens: result.inputTokens,
+                text:         result.text,
+                model:        result.model,
+                inputTokens:  result.inputTokens,
                 outputTokens: result.outputTokens,
-                totalTokens: (result.inputTokens || 0) + (result.outputTokens || 0)
+                totalTokens:  (result.inputTokens || 0) + (result.outputTokens || 0),
+                toolRounds:   result.toolRounds || 0
             });
         } else {
             response.setStatus(500);

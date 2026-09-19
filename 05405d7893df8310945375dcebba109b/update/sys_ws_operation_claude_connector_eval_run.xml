@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json</consumes>
+        <consumes_customized>false</consumes_customized>
+        <http_method>POST</http_method>
+        <name>eval_run</name>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/eval/run</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>false</requires_snc_internal_role>
+        <script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    /*
+     * POST /eval/run
+     *
+     * Body:
+     *   dataset_id       string  required  The dataset_id returned by /eval/generate.
+     *   prompt_template  string  required  Template string with {key} placeholders matching
+     *                                      the prompt_inputs_spec used during generation.
+     *   extra_criteria   string  optional  Additional mandatory requirements for the grader.
+     *
+     * Response:
+     *   {
+     *     run_id, dataset_id, case_count,
+     *     average_score,          // 0.0–10.0
+     *     pass_rate,              // % of cases scoring >= 7
+     *     cases: [
+     *       { sys_id, scenario, score, reasoning, output }
+     *     ]
+     *   }
+     */
+
+    var body = request.body.data;
+    var datasetId      = (body.dataset_id      || '').toString().trim();
+    var promptTemplate = (body.prompt_template || '').toString();
+    var extraCriteria  = (body.extra_criteria  || '').toString().trim();
+
+    if (!datasetId) {
+        response.setStatus(400);
+        response.setBody({ error: 'dataset_id is required.' });
+        return;
+    }
+    if (!promptTemplate) {
+        response.setStatus(400);
+        response.setBody({ error: 'prompt_template is required.' });
+        return;
+    }
+
+    var evaluator = new x_146833_claudec_0.ClaudePromptEvaluator();
+    var result    = evaluator.runEvaluation(datasetId, promptTemplate, extraCriteria);
+
+    response.setStatus(200);
+    response.setBody(result);
+
+})(request, response);
+]]></script>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>c6405d7893df8310945375dcebba1006</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>eval_run</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_ws_operation_claude_connector_eval_run</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <web_service_definition display_value="Claude Connector API">c0405d7893df8310945375dcebba1000</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_146833_claudec_0.ClaudeRequestLogger</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Writes and updates staging records in x_146833_claudec_0_request. Called by ClaudeConnector to create an audit trail of every API interaction including tokens, duration, model, status, and any error detail.</description>
+        <name>ClaudeRequestLogger</name>
+        <script><![CDATA[var ClaudeRequestLogger = Class.create();
+ClaudeRequestLogger.prototype = {
+    initialize: function() {},
+
+    /**
+     * Create a pending staging record before the API call.
+     * @param {Object} params - { session_id, model, prompt, system_prompt, max_tokens }
+     * @returns {string} sys_id of the created record
+     */
+    createPending: function(params) {
+        params = params || {};
+        var gr = new GlideRecord('x_146833_claudec_0_request');
+        gr.initialize();
+        gr.setValue('session_id',         params.session_id   || '');
+        gr.setValue('model',              params.model        || '');
+        gr.setValue('status',             'pending');
+        gr.setValue('prompt',             (params.prompt        || '').substring(0, 4000));
+        gr.setValue('system_prompt',      (params.system_prompt || '').substring(0, 4000));
+        gr.setValue('max_tokens_requested', params.max_tokens || 0);
+        gr.setValue('input_tokens',       0);
+        gr.setValue('output_tokens',      0);
+        gr.setValue('tool_rounds',        0);
+        gr.setValue('duration_ms',        0);
+        // Capture current user
+        try { gr.setValue('requested_by', gs.getUserID()); } catch(e) {}
+        var sysId = gr.insert();
+        return sysId ? sysId.toString() : '';
+    },
+
+    /**
+     * Update a staging record after a successful API response.
+     * @param {string} sysId  - sys_id from createPending
+     * @param {Object} result - { text, model, inputTokens, outputTokens, toolRounds, durationMs }
+     */
+    markSuccess: function(sysId, result) {
+        if (!sysId) { return; }
+        result = result || {};
+        var gr = new GlideRecord('x_146833_claudec_0_request');
+        if (!gr.get(sysId)) { return; }
+        gr.setValue('status',          'success');
+        gr.setValue('model',           result.model        || gr.getValue('model'));
+        gr.setValue('response_text',   (result.text || '').substring(0, 8000));
+        gr.setValue('input_tokens',    result.inputTokens  || 0);
+        gr.setValue('output_tokens',   result.outputTokens || 0);
+        gr.setValue('tool_rounds',     result.toolRounds   || 0);
+        gr.setValue('duration_ms',     result.durationMs   || 0);
+        gr.update();
+    },
+
+    /**
+     * Update a staging record after a failed API call.
+     * @param {string} sysId     - sys_id from createPending
+     * @param {string} errorMsg  - Error detail string
+     * @param {number} durationMs
+     */
+    markError: function(sysId, errorMsg, durationMs) {
+        if (!sysId) { return; }
+        var gr = new GlideRecord('x_146833_claudec_0_request');
+        if (!gr.get(sysId)) { return; }
+        gr.setValue('status',        'error');
+        gr.setValue('error_message', (errorMsg || '').substring(0, 1000));
+        gr.setValue('duration_ms',   durationMs || 0);
+        gr.update();
+    },
+
+    /**
+     * Return all logged requests for a given session as an array of plain objects.
+     * @param {string} sessionId
+     * @returns {Array}
+     */
+    getSessionHistory: function(sessionId) {
+        if (!sessionId) { return []; }
+        var records = [];
+        var gr = new GlideRecord('x_146833_claudec_0_request');
+        gr.addQuery('session_id', sessionId);
+        gr.orderBy('sys_created_on');
+        gr.query();
+        while (gr.next()) {
+            records.push({
+                sys_id:               gr.getUniqueValue(),
+                created_on:           gr.getValue('sys_created_on'),
+                session_id:           gr.getValue('session_id'),
+                model:                gr.getValue('model'),
+                status:               gr.getValue('status'),
+                prompt:               gr.getValue('prompt'),
+                system_prompt:        gr.getValue('system_prompt'),
+                response_text:        gr.getValue('response_text'),
+                input_tokens:         parseInt(gr.getValue('input_tokens'),  10) || 0,
+                output_tokens:        parseInt(gr.getValue('output_tokens'), 10) || 0,
+                max_tokens_requested: parseInt(gr.getValue('max_tokens_requested'), 10) || 0,
+                tool_rounds:          parseInt(gr.getValue('tool_rounds'),   10) || 0,
+                duration_ms:          parseInt(gr.getValue('duration_ms'),   10) || 0,
+                error_message:        gr.getValue('error_message') || ''
+            });
+        }
+        return records;
+    },
+
+    type: 'ClaudeRequestLogger'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 16:30:00</sys_created_on>
+        <sys_id>b2405d7893df8310945375dcebba1002</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ClaudeRequestLogger</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_script_include_claude_request_logger</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
