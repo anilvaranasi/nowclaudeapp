@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="eb5fda6be4e945bb89e7e8a50ec6be81" label="Claude Tool Execution Log" name="x_146833_claudec_0_tool_log" type="collection">
+        <element default="1" label="Round Number" name="round_number" type="integer"/>
+        <element default="0" label="Execution Time (ms)" name="execution_ms" type="integer"/>
+        <element display="true" label="Tool Name" mandatory="true" max_length="100" name="tool_name" type="string"/>
+        <element label="Tool Output" max_length="4000" name="output_text" type="string"/>
+        <element label="Tool Input (JSON)" max_length="4000" name="input_json" type="string"/>
+        <element default="true" label="Success" name="success" type="boolean"/>
+        <element label="API Request" mandatory="true" name="request" reference="x_146833_claudec_0_request" type="reference"/>
+        <index name="index">
+            <element name="request"/>
+        </index>
+    </element>
+</database>

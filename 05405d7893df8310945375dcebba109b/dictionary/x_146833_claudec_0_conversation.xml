@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="26b167517b8a45f990b9219462d6385c" label="Claude Conversation Message" name="x_146833_claudec_0_conversation" type="collection">
+        <element default="0" label="Sequence" mandatory="true" name="sequence" type="integer"/>
+        <element label="Model" max_length="100" name="model" type="string"/>
+        <element default="0" label="Input Tokens" name="input_tokens" type="integer"/>
+        <element label="Role" mandatory="true" name="role" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="User" sequence="0" value="user"/>
+                <element inactive_on_update="false" label="Assistant" sequence="1" value="assistant"/>
+                <element inactive_on_update="false" label="System" sequence="2" value="system"/>
+            </choice>
+        </element>
+        <element display="true" label="Session ID" mandatory="true" max_length="40" name="session_id" type="string"/>
+        <element label="API Request" name="request" reference="x_146833_claudec_0_request" type="reference"/>
+        <element label="Content" max_length="65000" name="content" type="string"/>
+        <element default="0" label="Output Tokens" name="output_tokens" type="integer"/>
+        <index name="index">
+            <element name="request"/>
+        </index>
+    </element>
+</database>

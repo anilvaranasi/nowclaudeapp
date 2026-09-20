@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="e1405d7893df8310945375dcebba1001" label="Claude API Request" name="x_146833_claudec_0_request" type="collection">
+        <element default="0" label="Input Tokens" name="input_tokens" type="integer"/>
+        <element display="true" label="Session ID" mandatory="true" max_length="40" name="session_id" type="string"/>
+        <element default="0" label="Duration (ms)" name="duration_ms" type="integer"/>
+        <element default="pending" label="Status" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Error" sequence="2" value="error"/>
+                <element inactive_on_update="false" label="Success" sequence="1" value="success"/>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+            </choice>
+        </element>
+        <element label="Model" max_length="100" name="model" type="string"/>
+        <element label="Requested By" name="requested_by" reference="sys_user" type="reference"/>
+        <element default="0" label="Max Tokens Requested" name="max_tokens_requested" type="integer"/>
+        <element label="System Prompt" max_length="4000" name="system_prompt" type="string"/>
+        <element label="Error Message" max_length="1000" name="error_message" type="string"/>
+        <element default="0" label="Tool Rounds" name="tool_rounds" type="integer"/>
+        <element label="Response Text" max_length="8000" name="response_text" type="string"/>
+        <element label="Prompt" max_length="4000" name="prompt" type="string"/>
+        <element default="0" label="Output Tokens" name="output_tokens" type="integer"/>
+        <index name="index">
+            <element name="requested_by"/>
+        </index>
+    </element>
+</database>

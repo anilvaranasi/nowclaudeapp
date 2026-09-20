@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3e4caf4d98694145a2807983c2f7aa3c" label="Claude Eval Case" name="x_146833_claudec_0_eval_case" type="collection">
+        <element label="Model Output" max_length="8000" name="output" type="string"/>
+        <element label="Prompt Inputs (JSON)" max_length="8000" name="prompt_inputs_json" type="string"/>
+        <element default="0" label="Score" name="score" type="integer"/>
+        <element label="Solution Criteria (JSON)" max_length="4000" name="solution_criteria_json" type="string"/>
+        <element label="Grading Reasoning" max_length="2000" name="reasoning" type="string"/>
+        <element label="Run ID" max_length="40" name="run_id" type="string"/>
+        <element label="Task Description" max_length="4000" name="task_description" type="string"/>
+        <element display="true" label="Scenario" max_length="2000" name="scenario" type="string"/>
+        <element label="Dataset ID" mandatory="true" max_length="40" name="dataset_id" type="string"/>
+    </element>
+</database>
