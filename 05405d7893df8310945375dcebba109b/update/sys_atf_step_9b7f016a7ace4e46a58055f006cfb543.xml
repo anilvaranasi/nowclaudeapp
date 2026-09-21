@@ -8,7 +8,7 @@
         <inputs/>
         <mugshots_cache_json/>
         <notes/>
-        <order>4</order>
+        <order>5</order>
         <step_config display_value="Assert Response JSON Payload Is Valid">f100f7079f132200ef4afa7dc67fcf42</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by/>

@@ -8,7 +8,7 @@
         <inputs/>
         <mugshots_cache_json/>
         <notes/>
-        <order>6</order>
+        <order>7</order>
         <step_config display_value="Assert Response Payload">d53e40d59f132200ef4afa7dc67fcfc7</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by/>
@@ -34,11 +34,11 @@
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
         <sys_id>33faab13aede40c98ecc7fc2e3ccd0e6</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
         <value>contains</value>
         <variable display_value="Operation">ccae44d59f132200ef4afa7dc67fcf1e</variable>
     </sys_variable_value>
@@ -48,11 +48,11 @@
         <order>110</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
         <sys_id>692f9d16286c4f92bde93a835542a5a0</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
         <value>inputTokens</value>
         <variable display_value="Response body">f0eec4d59f132200ef4afa7dc67fcf6d</variable>
     </sys_variable_value>

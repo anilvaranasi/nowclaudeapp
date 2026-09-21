@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="7666c9e26c4a4f11b3c95e892ab57e04" label="Claude Conversation Block" name="x_146833_claudec_0_message" type="collection">
+        <element label="Tool Result (JSON)" max_length="4000" name="tool_result_json" type="string"/>
+        <element default="0" label="Sequence" mandatory="true" name="sequence" type="integer"/>
+        <element label="Content Text" max_length="8000" name="content_text" type="string"/>
+        <element label="Role" mandatory="true" name="role" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="User" sequence="0" value="user"/>
+                <element inactive_on_update="false" label="Assistant" sequence="1" value="assistant"/>
+            </choice>
+        </element>
+        <element label="Request ID" max_length="40" name="request_id" type="string"/>
+        <element display="true" label="Session ID" mandatory="true" max_length="40" name="session_id" type="string"/>
+        <element label="Tool Name" max_length="100" name="tool_name" type="string"/>
+        <element default="text" label="Content Type" name="content_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Tool Use" sequence="1" value="tool_use"/>
+                <element inactive_on_update="false" label="Tool Result" sequence="2" value="tool_result"/>
+                <element inactive_on_update="false" label="Text" sequence="0" value="text"/>
+            </choice>
+        </element>
+        <element label="Tool Use ID" max_length="100" name="tool_use_id" type="string"/>
+        <element label="Is Error" name="is_error" type="boolean"/>
+        <element label="Tool Input (JSON)" max_length="4000" name="tool_input_json" type="string"/>
+    </element>
+</database>

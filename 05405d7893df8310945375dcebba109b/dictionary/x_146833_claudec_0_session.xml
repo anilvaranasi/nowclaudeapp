@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="13870664880045efb44b23f4099d17da" label="Claude Chat Session" name="x_146833_claudec_0_session" type="collection">
+        <element label="Model" max_length="100" name="model" type="string"/>
+        <element default="0" label="Total Output Tokens" name="total_output_tokens" type="integer"/>
+        <element label="System Prompt" max_length="4000" name="system_prompt" type="string"/>
+        <element default="0" label="Total Input Tokens" name="total_input_tokens" type="integer"/>
+        <element label="Created By" name="created_by_user" reference="sys_user" type="reference"/>
+        <element display="true" label="Session ID" mandatory="true" max_length="40" name="session_id" type="string" unique="true"/>
+        <element default="0" label="Turn Count" name="turn_count" type="integer"/>
+        <element default="active" label="Status" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Active" sequence="0" value="active"/>
+                <element inactive_on_update="false" label="Cleared" sequence="2" value="cleared"/>
+                <element inactive_on_update="false" label="Error" sequence="1" value="error"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="created_by_user"/>
+        </index>
+    </element>
+</database>

@@ -8,7 +8,7 @@
         <inputs/>
         <mugshots_cache_json/>
         <notes/>
-        <order>7</order>
+        <order>8</order>
         <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
         <sys_created_by/>
@@ -34,11 +34,11 @@
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
+        <sys_created_on>2026-09-21 13:42:32</sys_created_on>
         <sys_id>351b583ed80b4ee981ebad0600f1cfe3</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:42:32</sys_updated_on>
         <value>3.1</value>
         <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
     </sys_variable_value>
@@ -48,13 +48,12 @@
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
+        <sys_created_on>2026-09-21 13:42:32</sys_created_on>
         <sys_id>6863aef2a8ba42e482e4fdc8f37d2d74</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
-        <value>
-(function(outputs, steps, params, stepResult, assertEqual) {
+        <sys_updated_on>2026-09-21 13:42:32</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {
     var gr = new GlideRecord('x_146833_claudec_0_request');
     gr.addQuery('session_id', 'atf_chat_e2e_test');
     gr.orderByDesc('sys_created_on');
@@ -89,8 +88,7 @@
         ', out_tokens=' + outputTokens +
         ', duration_ms=' + durationMs
     );
-})(outputs, steps, params, stepResult, assertEqual);
-        </value>
+})(outputs, steps, params, stepResult, assertEqual);</value>
         <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
     </sys_variable_value>
 </record_update>
