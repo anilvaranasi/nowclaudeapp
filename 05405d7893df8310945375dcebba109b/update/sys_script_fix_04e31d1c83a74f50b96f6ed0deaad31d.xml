@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>TestClaudeAPIConnection</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[// ─── Direct script include test (bypasses HTTP auth entirely) ───────────────
+// Run in: System Definition → Scripts - Background
+
+var sessionId = 'bg_test_' + new GlideDateTime().getNumericValue();
+
+// 1. Build the messages array exactly as the /chat REST op does
+var mgr      = new x_146833_claudec_0.ClaudeConversationManager();
+var messages = mgr.load_messages(sessionId);
+mgr.add_user_message(messages, 'What is today\'s date and time?');
+
+// 2. Run the conversation loop (calls Claude, persists to DB)
+var connector = new x_146833_claudec_0.ClaudeConnector();
+var result = connector.chatWithTools(messages, {
+    session_id:   sessionId,
+    prompt:       'What is today\'s date and time?',
+    system_prompt: 'You are a helpful assistant with access to date/time tools.'
+});
+
+// 3. Print results
+gs.info('=== Claude Test Result ===');
+gs.info('success:      ' + result.success);
+gs.info('text:         ' + result.text);
+gs.info('model:        ' + result.model);
+gs.info('inputTokens:  ' + result.inputTokens);
+gs.info('outputTokens: ' + result.outputTokens);
+gs.info('toolRounds:   ' + result.toolRounds);
+if (!result.success) { gs.info('error: ' + result.error); }
+
+// 4. Verify session row was created
+var sess = new GlideRecord('x_146833_claudec_0_session');
+sess.addQuery('session_id', sessionId);
+sess.query();
+gs.info('=== Session Row ===');
+if (sess.next()) {
+    gs.info('status:      ' + sess.getValue('status'));
+    gs.info('turn_count:  ' + sess.getValue('turn_count'));
+    gs.info('total_in:    ' + sess.getValue('total_input_tokens'));
+    gs.info('total_out:   ' + sess.getValue('total_output_tokens'));
+} else {
+    gs.info('ERROR: no session row found');
+}
+
+// 5. Verify message rows were persisted
+var msg = new GlideRecord('x_146833_claudec_0_message');
+msg.addQuery('session_id', sessionId);
+msg.orderBy('sequence');
+msg.query();
+gs.info('=== Message Rows ===');
+while (msg.next()) {
+    gs.info('seq=' + msg.getValue('sequence') +
+            ' role=' + msg.getValue('role') +
+            ' type=' + msg.getValue('content_type') +
+            ' tool=' + (msg.getValue('tool_name') || '-') +
+            ' text=' + (msg.getValue('content_text') || '').substring(0, 80));
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:37:41</sys_created_on>
+        <sys_id>04e31d1c83a74f50b96f6ed0deaad31d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>TestClaudeAPIConnection</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_script_fix_04e31d1c83a74f50b96f6ed0deaad31d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:37:41</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

@@ -8,20 +8,20 @@
         <inputs/>
         <mugshots_cache_json/>
         <notes/>
-        <order>1</order>
+        <order>2</order>
         <step_config display_value="Send REST Request - Inbound">e00571a10b3222000b7da95e93673a8f</step_config>
         <sys_class_name>sys_atf_step</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:33</sys_created_on>
+        <sys_created_by/>
+        <sys_created_on/>
         <sys_id>02b2509a955740ce863ffde2e82017d4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Send REST Request - Inbound</sys_name>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_package/>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
         <sys_update_name>sys_atf_step_02b2509a955740ce863ffde2e82017d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:33</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <table/>
         <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
         <timeout/>
@@ -34,11 +34,11 @@
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:33</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>2b962533103743768509adf21240433f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:33</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value/>
         <variable display_value="Basic authentication">020a6af09fd32200ef4afa7dc67fcfec</variable>
     </sys_variable_value>
@@ -48,11 +48,11 @@
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:34</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>3d2e12c18e0645d988e226acc8a6f9d0</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:34</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value/>
         <variable display_value="Mutual Authentication">89ad06b543010210b6f9a0246bb8f2d7</variable>
     </sys_variable_value>
@@ -62,11 +62,11 @@
         <order>3</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:33</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>565d98aed14647108f31334f3c5546c0</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:33</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value/>
         <variable display_value="Query Parameters">58408e250b3222000b7da95e93673a5c</variable>
     </sys_variable_value>
@@ -76,11 +76,11 @@
         <order>1</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:33</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>6026e19e176744c3a51e03fcc2f7d610</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:33</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value>post</value>
         <variable display_value="Method">59877da10b3222000b7da95e93673a56</variable>
     </sys_variable_value>
@@ -90,11 +90,11 @@
         <order>5</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:34</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>8d69b4f8ea84463eb631cdd736141f1f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:34</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value>{"session_id":"atf_chat_e2e_test","prompt":"Reply with exactly: Hello from Claude","model":"claude-sonnet-5"}</value>
         <variable display_value="Body">81e042650b3222000b7da95e93673aa2</variable>
     </sys_variable_value>
@@ -104,11 +104,11 @@
         <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:34</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>a4e74ce6453d4761920b51fed9ecb7ff</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:34</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value>basic</value>
         <variable display_value="Authentication Type">6cdd0ab543010210b6f9a0246bb8f2f2</variable>
     </sys_variable_value>
@@ -118,11 +118,11 @@
         <order>2</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:33</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>b8b25c7352404312ac60f2eaff5c7d6e</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:33</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value>/api/x_146833_claudec_0/claude_connector_api/chat</value>
         <variable display_value="Path">50bff9250b3222000b7da95e93673a9b</variable>
     </sys_variable_value>
@@ -132,11 +132,11 @@
         <order>4</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-21 07:39:34</sys_created_on>
+        <sys_created_on>2026-09-21 13:39:12</sys_created_on>
         <sys_id>be4b2fb108c8404f877cb0b1093301aa</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 07:39:34</sys_updated_on>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
         <value>{"Content-Type":"application/json"}</value>
         <variable display_value="Headers">cec002650b3222000b7da95e93673aae</variable>
     </sys_variable_value>

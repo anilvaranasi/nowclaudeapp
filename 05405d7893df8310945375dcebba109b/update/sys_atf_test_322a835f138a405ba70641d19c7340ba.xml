@@ -2,7 +2,7 @@
     <sys_atf_test action="INSERT_OR_UPDATE">
         <active>true</active>
         <copied_from/>
-        <description>Sends a POST to the /chat Scripted REST endpoint with a simple prompt, asserts a 200 response with text/model/token fields, then queries x_146833_claudec_0_request to verify the ClaudeRequestLogger wrote a staging record with status=success, non-empty model, and positive token counts.</description>
+        <description>Calls ClaudeConnector.chatWithTools() directly with a simple prompt, verifies a successful response with text and token counts, then queries x_146833_claudec_0_request to confirm the staging record was created with status=success, model populated, positive token counts, duration, and captured prompt/response.</description>
         <enable_parameterized_testing>false</enable_parameterized_testing>
         <fail_on_server_error>true</fail_on_server_error>
         <name>Claude Chat API - E2E with Staging Table</name>
