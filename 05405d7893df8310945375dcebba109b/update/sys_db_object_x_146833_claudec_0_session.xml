@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update_set>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     Session table: x_146833_claudec_0_session
+     One row per conversation session. Acts as the parent for all message rows
+     belonging to that conversation. Replaces ephemeral gs.getSession() storage.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- Table definition -->
+<record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>false</create_access_controls>
+        <delete_access>false</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>Claude Session</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_146833_claudec_0_session</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>false</read_access>
+        <scriptable_table>false</scriptable_table>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s0405d7893df8310945375dcebba1000</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_db_object_x_146833_claudec_0_session</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role/>
+        <ws_access>false</ws_access>
+    </sys_db_object>
+</record_update>
+
+<!-- session_id: caller-supplied UUID that identifies this conversation -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Session ID</column_label>
+        <comments>Caller-supplied UUID that uniquely identifies this conversation. Indexed for fast lookup.</comments>
+        <default_value/>
+        <element>session_id</element>
+        <internal_type>string</internal_type>
+        <max_length>128</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s1405d7893df8310945375dcebba1001</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.session_id</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_session_id</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- title: optional human-readable name for the session -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Title</column_label>
+        <comments>Optional human-readable title for this conversation (e.g. first user message truncated).</comments>
+        <default_value/>
+        <element>title</element>
+        <internal_type>string</internal_type>
+        <max_length>256</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s2405d7893df8310945375dcebba1002</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.title</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_title</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- model: last model used in this session -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Model</column_label>
+        <comments>The Claude model most recently used in this session (updated on each turn).</comments>
+        <default_value/>
+        <element>model</element>
+        <internal_type>string</internal_type>
+        <max_length>128</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s3405d7893df8310945375dcebba1003</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.model</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_model</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- system_prompt: system prompt active for this session -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>System Prompt</column_label>
+        <comments>The system prompt configured for this session. Stored once here rather than repeated per request.</comments>
+        <default_value/>
+        <element>system_prompt</element>
+        <internal_type>string</internal_type>
+        <max_length>4000</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s4405d7893df8310945375dcebba1004</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.system_prompt</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_system_prompt</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- turn_count: number of completed user→assistant exchanges -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Turn Count</column_label>
+        <comments>Number of completed user→assistant exchanges in this session. Incremented on each successful chat call.</comments>
+        <default_value>0</default_value>
+        <element>turn_count</element>
+        <internal_type>integer</internal_type>
+        <max_length>40</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s5405d7893df8310945375dcebba1005</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.turn_count</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_turn_count</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- total_input_tokens: cumulative input tokens across all turns -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Total Input Tokens</column_label>
+        <comments>Cumulative input tokens consumed across all turns in this session.</comments>
+        <default_value>0</default_value>
+        <element>total_input_tokens</element>
+        <internal_type>integer</internal_type>
+        <max_length>40</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s6405d7893df8310945375dcebba1006</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.total_input_tokens</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_total_input_tokens</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- total_output_tokens: cumulative output tokens across all turns -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Total Output Tokens</column_label>
+        <comments>Cumulative output tokens produced across all turns in this session.</comments>
+        <default_value>0</default_value>
+        <element>total_output_tokens</element>
+        <internal_type>integer</internal_type>
+        <max_length>40</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s7405d7893df8310945375dcebba1007</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.total_output_tokens</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_total_output_tokens</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- status: active | cleared -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Status</column_label>
+        <comments>active = conversation is ongoing; cleared = user has cleared the session history.</comments>
+        <default_value>active</default_value>
+        <element>status</element>
+        <internal_type>string</internal_type>
+        <max_length>32</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s8405d7893df8310945375dcebba1008</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.status</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_status</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+<!-- created_by_user: the SN user who started this session -->
+<record_update table="sys_dictionary">
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <column_label>Created By User</column_label>
+        <comments>The ServiceNow user who started this session.</comments>
+        <default_value/>
+        <element>created_by_user</element>
+        <internal_type>reference</internal_type>
+        <max_length>32</max_length>
+        <name>x_146833_claudec_0_session</name>
+        <reference>sys_user</reference>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>s9405d7893df8310945375dcebba1009</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_146833_claudec_0_session.created_by_user</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_dictionary_x_146833_claudec_0_session_created_by_user</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_dictionary>
+</record_update>
+
+</record_update_set>
