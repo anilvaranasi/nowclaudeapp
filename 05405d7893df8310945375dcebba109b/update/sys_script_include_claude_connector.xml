@@ -208,143 +208,69 @@ ClaudeConnector.prototype = {
     // ─── Agentic chat (tool-use loop) ─────────────────────────────────────────
     /**
      * Send a chat request to Claude with agentic tool-use support.
-     * Runs up to 10 tool-call rounds. Writes a staging record via ClaudeRequestLogger.
+     * Delegates to ClaudeConversationManager.run_conversation() which persists
+     * every content block (user text, assistant text, tool_use, tool_result) to
+     * x_146833_claudec_0_message and maintains the x_146833_claudec_0_session record.
+     * Also writes a summary audit row via ClaudeRequestLogger.
+     *
      * @param {Array}  messages - Array of {role, content} objects
      * @param {Object} opts     - Optional: model, system_prompt, stop_sequences, max_tokens,
-     *                            session_id, prompt (for logging)
+     *                            session_id, prompt, temperature (for logging)
      * @returns {Object}        - {success, text, inputTokens, outputTokens, model, toolRounds, error}
      */
     chatWithTools: function(messages, opts) {
         opts = opts || {};
-        var model        = opts.model          || this.model;
-        var systemPrompt = opts.system_prompt   || '';
-        var stopSeqs     = opts.stop_sequences  || [];
-        var maxTok       = opts.max_tokens      || this.maxTokens;
+        var systemPrompt = opts.system_prompt || '';
+        var model        = opts.model         || this.model;
+        var maxTok       = opts.max_tokens    || this.maxTokens;
         var temperature  = (opts.temperature != null) ? opts.temperature : 1.0;
+        var sessionId    = opts.session_id    || 'default';
 
-        var logger  = new x_146833_claudec_0.ClaudeRequestLogger();
-        var startMs = new GlideDateTime().getNumericValue();
+        // Write pending audit row
+        var logger    = new x_146833_claudec_0.ClaudeRequestLogger();
+        var startMs   = new GlideDateTime().getNumericValue();
         var stagingId = logger.createPending({
-            session_id:    opts.session_id   || '',
+            session_id:    sessionId,
             model:         model,
-            prompt:        opts.prompt       || '',
+            prompt:        opts.prompt || '',
             system_prompt: systemPrompt,
             max_tokens:    maxTok
         });
 
-        var msgsCopy = [];
-        for (var i = 0; i < messages.length; i++) {
-            msgsCopy.push({ role: messages[i].role, content: messages[i].content });
+        // Delegate to ClaudeConversationManager for the full loop + persistence
+        var mgr    = new x_146833_claudec_0.ClaudeConversationManager();
+        var result = mgr.run_conversation(messages, {
+            session_id:  sessionId,
+            system:      systemPrompt,
+            temperature: temperature,
+            model:       model,
+            max_tokens:  maxTok
+        });
+
+        var durationMs = new GlideDateTime().getNumericValue() - startMs;
+
+        if (!result.success) {
+            logger.markError(stagingId, result.error, durationMs);
+            return { success: false, error: result.error };
         }
 
-        var totalIn   = 0;
-        var totalOut  = 0;
-        var modelUsed = model;
-        var toolRounds = 0;
-        var MAX_ROUNDS = 10;
+        logger.markSuccess(stagingId, {
+            text:         result.text,
+            model:        result.model,
+            inputTokens:  result.inputTokens,
+            outputTokens: result.outputTokens,
+            toolRounds:   result.toolRounds,
+            durationMs:   durationMs
+        });
 
-        for (var round = 0; round < MAX_ROUNDS; round++) {
-            var payload = {
-                model:       model,
-                max_tokens:  maxTok,
-                messages:    msgsCopy,
-                tools:       this.TOOL_SCHEMAS,
-                temperature: temperature
-            };
-            if (systemPrompt) { payload.system = systemPrompt; }
-            if (stopSeqs && stopSeqs.length > 0) { payload.stop_sequences = stopSeqs; }
-
-            var req = new sn_ws.RESTMessageV2();
-            req.setEndpoint(this.messagesUrl);
-            req.setHttpMethod('POST');
-            req.setRequestHeader('x-api-key',         this.authToken);
-            req.setRequestHeader('anthropic-version', '2023-06-01');
-            req.setRequestHeader('content-type',      'application/json');
-            req.setRequestBody(JSON.stringify(payload));
-            req.setHttpTimeout(120000);
-
-            var resp, statusCode, bodyStr;
-            try {
-                resp       = req.execute();
-                statusCode = resp.getStatusCode();
-                bodyStr    = resp.getBody();
-            } catch (e) {
-                var errMs = new GlideDateTime().getNumericValue() - startMs;
-                logger.markError(stagingId, e.toString(), errMs);
-                return { success: false, error: e.toString() };
-            }
-
-            if (statusCode < 200 || statusCode >= 300) {
-                var apiErrMs  = new GlideDateTime().getNumericValue() - startMs;
-                var apiErrMsg = 'API error ' + statusCode + ': ' + bodyStr;
-                logger.markError(stagingId, apiErrMsg, apiErrMs);
-                return { success: false, error: apiErrMsg };
-            }
-
-            var json;
-            try { json = JSON.parse(bodyStr); } catch(e) {
-                var parseErrMs  = new GlideDateTime().getNumericValue() - startMs;
-                var parseErrMsg = 'JSON parse error: ' + e.toString();
-                logger.markError(stagingId, parseErrMsg, parseErrMs);
-                return { success: false, error: parseErrMsg };
-            }
-
-            var usage = json.usage || {};
-            totalIn  += usage.input_tokens  || 0;
-            totalOut += usage.output_tokens || 0;
-            modelUsed = json.model || model;
-
-            var stopReason    = json.stop_reason || '';
-            var content       = json.content     || [];
-            var textOut       = '';
-            var toolUseBlocks = [];
-
-            for (var c = 0; c < content.length; c++) {
-                if (content[c].type === 'text')     { textOut += content[c].text; }
-                if (content[c].type === 'tool_use') { toolUseBlocks.push(content[c]); }
-            }
-
-            if (stopReason !== 'tool_use' || toolUseBlocks.length === 0) {
-                var doneMs = new GlideDateTime().getNumericValue() - startMs;
-                logger.markSuccess(stagingId, {
-                    text:         textOut,
-                    model:        modelUsed,
-                    inputTokens:  totalIn,
-                    outputTokens: totalOut,
-                    toolRounds:   toolRounds,
-                    durationMs:   doneMs
-                });
-                return {
-                    success:      true,
-                    text:         textOut,
-                    inputTokens:  totalIn,
-                    outputTokens: totalOut,
-                    model:        modelUsed,
-                    toolRounds:   toolRounds
-                };
-            }
-
-            // Tool calls needed — append assistant turn and dispatch tools
-            toolRounds += 1;
-            msgsCopy.push({ role: 'assistant', content: content });
-
-            var toolResults = [];
-            for (var t = 0; t < toolUseBlocks.length; t++) {
-                var block  = toolUseBlocks[t];
-                var result = this.dispatch_tool(block.name, block.input);
-                toolResults.push({
-                    type:        'tool_result',
-                    tool_use_id: block.id,
-                    content:     result
-                });
-            }
-            msgsCopy.push({ role: 'user', content: toolResults });
-        }
-
-        var maxRoundMs  = new GlideDateTime().getNumericValue() - startMs;
-        var maxRoundErr = 'Tool-use loop exceeded maximum rounds (' + MAX_ROUNDS + ')';
-        logger.markError(stagingId, maxRoundErr, maxRoundMs);
-        return { success: false, error: maxRoundErr };
+        return {
+            success:      true,
+            text:         result.text,
+            inputTokens:  result.inputTokens,
+            outputTokens: result.outputTokens,
+            model:        result.model,
+            toolRounds:   result.toolRounds
+        };
     },
 
     /**

@@ -8,11 +8,19 @@
         <http_method>POST</http_method>
         <name>clear</name>
         <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
-    var body = request.body.data;
+    var body      = request.body.data;
     var sessionId = (body && body.session_id) ? body.session_id + '' : 'default';
-    var historyKey = 'claude_history_' + sessionId;
-    gs.getSession().putClientData(historyKey, '[]');
-    response.setBody({ success: true });
+
+    // Mark the persistent session record as cleared (preserves message audit trail)
+    var mgr = new x_146833_claudec_0.ClaudeConversationManager();
+    mgr.clear_session(sessionId);
+
+    // Also clear the legacy session client data for backwards compatibility
+    try {
+        gs.getSession().putClientData('claude_history_' + sessionId, '[]');
+    } catch(e) {}
+
+    response.setBody({ success: true, session_id: sessionId });
 })(request, response);
 ]]></operation_script>
         <operation_uri>/api/x_146833_claudec_0/claude_connector_api/clear</operation_uri>

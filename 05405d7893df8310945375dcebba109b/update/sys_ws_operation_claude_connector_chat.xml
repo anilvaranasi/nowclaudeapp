@@ -51,25 +51,12 @@
             if (!isNaN(parsedTemp) && parsedTemp >= 0 && parsedTemp <= 1) { temperature = parsedTemp; }
         }
 
-        // Get existing conversation history from session
-        var historyKey = 'claude_history_' + sessionId;
-        var historyStr = '';
-        try {
-            historyStr = gs.getSession().getClientData(historyKey) || '[]';
-        } catch (e) {
-            historyStr = '[]';
-        }
+        // Load persistent conversation history from the message table
+        var mgr      = new x_146833_claudec_0.ClaudeConversationManager();
+        var messages = mgr.load_messages(sessionId);
 
-        var messages;
-        try {
-            messages = JSON.parse(historyStr);
-        } catch (e) {
-            messages = [];
-        }
-        if (!Array.isArray(messages)) { messages = []; }
-
-        // Add user message
-        messages.push({ role: 'user', content: prompt });
+        // Add the new user message (add_user_message handles plain strings)
+        mgr.add_user_message(messages, prompt);
 
         // Parse stop sequences (comma-separated string)
         var stopArr = [];
@@ -112,14 +99,6 @@
         }
 
         if (result && result.success) {
-            // Add assistant reply to conversation history
-            messages.push({ role: 'assistant', content: result.text });
-            try {
-                gs.getSession().putClientData(historyKey, JSON.stringify(messages));
-            } catch (e) {
-                // Session storage failed — non-fatal, continue
-            }
-
             response.setBody({
                 text:         result.text,
                 model:        result.model,

@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_146833_claudec_0.ClaudeConversationManager</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Manages persistent multi-turn conversations with tool-use support.
+Mirrors the notebook pattern: chat() returns a raw response object; add_user_message() and
+add_assistant_message() handle both plain text and full response objects; text_from_message()
+extracts text blocks; run_conversation() is the agentic loop that persists every content block
+(user text, assistant text, tool_use, tool_result) to x_146833_claudec_0_message and maintains
+the x_146833_claudec_0_session parent record.</description>
+        <name>ClaudeConversationManager</name>
+        <script><![CDATA[var ClaudeConversationManager = Class.create();
+ClaudeConversationManager.prototype = {
+
+    initialize: function() {},
+
+    // ─── chat() ───────────────────────────────────────────────────────────────
+    /**
+     * Raw API call — mirrors the notebook's chat().
+     * Returns the full parsed JSON response object, NOT just text.
+     *
+     * @param {Array}  messages        - Array of {role, content} objects
+     * @param {Object} opts
+     *   opts.system         {string}  - System prompt
+     *   opts.temperature    {number}  - 0.0–1.0 (default 1.0)
+     *   opts.stop_sequences {Array}   - Stop sequences
+     *   opts.tools          {Array}   - Tool schemas (omit to call without tools)
+     *   opts.model          {string}  - Model override
+     *   opts.max_tokens     {number}  - Max tokens override
+     * @returns {Object} Raw Claude API response: { id, type, role, content[], stop_reason, usage, model }
+     *                   OR { _error: true, message: string } on failure
+     */
+    chat: function(messages, opts) {
+        opts = opts || {};
+        var connector = new x_146833_claudec_0.ClaudeConnector();
+
+        var payload = {
+            model:       opts.model       || connector.model,
+            max_tokens:  opts.max_tokens  || connector.maxTokens,
+            messages:    messages,
+            temperature: (opts.temperature != null) ? opts.temperature : 1.0
+        };
+        if (opts.stop_sequences && opts.stop_sequences.length > 0) {
+            payload.stop_sequences = opts.stop_sequences;
+        }
+        if (opts.tools && opts.tools.length > 0) {
+            payload.tools = opts.tools;
+        }
+        if (opts.system) {
+            payload.system = opts.system;
+        }
+
+        var req = new sn_ws.RESTMessageV2();
+        req.setEndpoint(connector.messagesUrl);
+        req.setHttpMethod('POST');
+        req.setRequestHeader('x-api-key',         connector.authToken);
+        req.setRequestHeader('anthropic-version', '2023-06-01');
+        req.setRequestHeader('content-type',      'application/json');
+        req.setRequestBody(JSON.stringify(payload));
+        req.setHttpTimeout(120000);
+
+        var resp, statusCode, bodyStr;
+        try {
+            resp       = req.execute();
+            statusCode = resp.getStatusCode();
+            bodyStr    = resp.getBody();
+        } catch(e) {
+            return { _error: true, message: e.toString() };
+        }
+
+        if (statusCode < 200 || statusCode >= 300) {
+            return { _error: true, message: 'API error ' + statusCode + ': ' + bodyStr };
+        }
+
+        try {
+            return JSON.parse(bodyStr);
+        } catch(e) {
+            return { _error: true, message: 'JSON parse error: ' + e.toString() };
+        }
+    },
+
+    // ─── add_user_message() ───────────────────────────────────────────────────
+    /**
+     * Append a user turn to the messages array.
+     * Mirrors: add_user_message(messages, message)
+     *
+     * message can be:
+     *   - a plain string  → wrapped as a single text content block
+     *   - an array        → used directly as content (tool_result blocks etc.)
+     *   - a response obj  → message.content array used (for re-feeding a response as user)
+     */
+    add_user_message: function(messages, message) {
+        var content;
+        if (typeof message === 'string') {
+            content = message;
+        } else if (Array.isArray(message)) {
+            content = message;
+        } else if (message && message.content) {
+            // full response object — use its content array
+            content = message.content;
+        } else {
+            content = message;
+        }
+        messages.push({ role: 'user', content: content });
+    },
+
+    // ─── add_assistant_message() ─────────────────────────────────────────────
+    /**
+     * Append an assistant turn to the messages array.
+     * Mirrors: add_assistant_message(messages, message)
+     *
+     * message can be:
+     *   - a plain string   → wrapped as content
+     *   - a response obj   → message.content array used (preserves tool_use blocks)
+     */
+    add_assistant_message: function(messages, message) {
+        var content;
+        if (typeof message === 'string') {
+            content = message;
+        } else if (message && message.content) {
+            // full response object — preserve all blocks (text + tool_use)
+            content = message.content;
+        } else {
+            content = message;
+        }
+        messages.push({ role: 'assistant', content: content });
+    },
+
+    // ─── text_from_message() ─────────────────────────────────────────────────
+    /**
+     * Extract concatenated text from a response object.
+     * Mirrors: text_from_message(message)
+     *
+     * @param {Object} message - Raw Claude response object
+     * @returns {string}
+     */
+    text_from_message: function(message) {
+        if (!message || !message.content) { return ''; }
+        var parts = [];
+        for (var i = 0; i < message.content.length; i++) {
+            if (message.content[i].type === 'text') {
+                parts.push(message.content[i].text || '');
+            }
+        }
+        return parts.join('\n');
+    },
+
+    // ─── run_tools() ─────────────────────────────────────────────────────────
+    /**
+     * Dispatch all tool_use blocks from a response and return tool_result content blocks.
+     * Mirrors the notebook's run_tools() / tool dispatch inline.
+     *
+     * @param {Object} response - Raw Claude response object
+     * @returns {Array}  Array of tool_result content blocks ready to send back
+     */
+    run_tools: function(response) {
+        var connector    = new x_146833_claudec_0.ClaudeConnector();
+        var toolResults  = [];
+        var content      = (response && response.content) ? response.content : [];
+
+        for (var i = 0; i < content.length; i++) {
+            var block = content[i];
+            if (block.type !== 'tool_use') { continue; }
+
+            var result, isError;
+            try {
+                result  = connector.dispatch_tool(block.name, block.input);
+                isError = false;
+            } catch(e) {
+                result  = e.toString();
+                isError = true;
+            }
+
+            var toolResult = {
+                type:        'tool_result',
+                tool_use_id: block.id,
+                content:     (typeof result === 'string') ? result : JSON.stringify(result)
+            };
+            if (isError) { toolResult.is_error = true; }
+            toolResults.push(toolResult);
+        }
+        return toolResults;
+    },
+
+    // ─── run_conversation() ──────────────────────────────────────────────────
+    /**
+     * Agentic conversation loop — mirrors run_conversation(messages) from the notebook.
+     *
+     * Loop:
+     *   1. call chat() with current messages + tools
+     *   2. add_assistant_message() — appends full response (text + tool_use blocks)
+     *   3. if no tool_use → break
+     *   4. run_tools() → build tool_result blocks
+     *   5. add_user_message() with tool_result blocks
+     *   6. repeat
+     *
+     * Persists every content block to x_146833_claudec_0_message.
+     * Maintains x_146833_claudec_0_session parent record.
+     *
+     * @param {Array}  messages  - Conversation so far (mutated in place, same as notebook)
+     * @param {Object} opts
+     *   opts.session_id    {string}  - Session identifier
+     *   opts.system        {string}  - System prompt
+     *   opts.temperature   {number}  - Temperature
+     *   opts.model         {string}  - Model override
+     *   opts.max_tokens    {number}  - Max tokens override
+     * @returns {Object} { success, text, messages, inputTokens, outputTokens, toolRounds, model, error }
+     */
+    run_conversation: function(messages, opts) {
+        opts = opts || {};
+        var sessionId   = opts.session_id || 'default';
+        var MAX_ROUNDS  = 10;
+        var toolRounds  = 0;
+        var totalIn     = 0;
+        var totalOut    = 0;
+        var modelUsed   = '';
+        var connector   = new x_146833_claudec_0.ClaudeConnector();
+        var ALL_TOOLS   = connector.TOOL_SCHEMAS;
+
+        // Ensure session row exists
+        this._upsertSession(sessionId, opts);
+
+        // Persist the initial user message(s) that were passed in but not yet saved
+        // (sequence counter is fetched fresh each time from the DB)
+        var seq = this._nextSequence(sessionId);
+        var lastMsg = messages[messages.length - 1];
+        if (lastMsg && lastMsg.role === 'user') {
+            seq = this._persistTurn(sessionId, 'user', lastMsg.content, seq, null);
+        }
+
+        while (toolRounds <= MAX_ROUNDS) {
+            var response = this.chat(messages, {
+                system:         opts.system,
+                temperature:    opts.temperature,
+                model:          opts.model,
+                max_tokens:     opts.max_tokens,
+                tools:          ALL_TOOLS
+            });
+
+            if (response._error) {
+                this._updateSession(sessionId, { status: 'error' });
+                return { success: false, error: response.message };
+            }
+
+            // Accumulate token usage
+            var usage  = response.usage || {};
+            totalIn   += usage.input_tokens  || 0;
+            totalOut  += usage.output_tokens || 0;
+            modelUsed  = response.model || modelUsed;
+
+            // add_assistant_message — appends full content array (text + tool_use blocks)
+            this.add_assistant_message(messages, response);
+
+            // Persist assistant turn blocks
+            seq = this._persistTurn(sessionId, 'assistant', response.content, seq, null);
+
+            // If no tool_use → done
+            var toolUseBlocks = this._toolUseBlocks(response);
+            if (response.stop_reason !== 'tool_use' || toolUseBlocks.length === 0) {
+                break;
+            }
+
+            // run_tools → tool_result blocks
+            toolRounds += 1;
+            var toolResultBlocks = this.run_tools(response);
+
+            // add_user_message with tool_result blocks
+            this.add_user_message(messages, toolResultBlocks);
+
+            // Persist tool_result turn
+            seq = this._persistTurn(sessionId, 'user', toolResultBlocks, seq, null);
+
+            if (toolRounds >= MAX_ROUNDS) {
+                return { success: false, error: 'Tool-use loop exceeded maximum rounds (' + MAX_ROUNDS + ')' };
+            }
+        }
+
+        var finalText = this.text_from_message(messages[messages.length - 1]);
+
+        // Update session aggregates
+        this._updateSession(sessionId, {
+            model:                modelUsed,
+            system_prompt:        opts.system || '',
+            total_input_tokens:   totalIn,
+            total_output_tokens:  totalOut,
+            turn_count_increment: 1
+        });
+
+        return {
+            success:      true,
+            text:         finalText,
+            messages:     messages,
+            inputTokens:  totalIn,
+            outputTokens: totalOut,
+            toolRounds:   toolRounds,
+            model:        modelUsed
+        };
+    },
+
+    // ─── clear_session() ─────────────────────────────────────────────────────
+    /**
+     * Mark a session as cleared. Does not delete message rows (preserves audit trail).
+     * @param {string} sessionId
+     */
+    clear_session: function(sessionId) {
+        if (!sessionId) { return; }
+        var gr = new GlideRecord('x_146833_claudec_0_session');
+        gr.addQuery('session_id', sessionId);
+        gr.query();
+        if (gr.next()) {
+            gr.setValue('status', 'cleared');
+            gr.update();
+        }
+    },
+
+    // ─── load_messages() ─────────────────────────────────────────────────────
+    /**
+     * Reconstruct the messages[] array for a session from persisted message rows.
+     * Groups consecutive blocks of the same role into a single turn,
+     * which is required by the Claude API.
+     *
+     * @param {string} sessionId
+     * @returns {Array} messages array ready to pass to chat()
+     */
+    load_messages: function(sessionId) {
+        if (!sessionId) { return []; }
+
+        var rows = [];
+        var gr   = new GlideRecord('x_146833_claudec_0_message');
+        gr.addQuery('session_id', sessionId);
+        gr.orderBy('sequence');
+        gr.query();
+        while (gr.next()) {
+            rows.push({
+                role:             gr.getValue('role'),
+                content_type:     gr.getValue('content_type'),
+                content_text:     gr.getValue('content_text')     || '',
+                tool_use_id:      gr.getValue('tool_use_id')      || '',
+                tool_name:        gr.getValue('tool_name')        || '',
+                tool_input_json:  gr.getValue('tool_input_json')  || '{}',
+                tool_result_json: gr.getValue('tool_result_json') || '',
+                is_error:         gr.getValue('is_error') === '1' || gr.getValue('is_error') === true
+            });
+        }
+
+        // Re-group rows into turns
+        var messages = [];
+        var i = 0;
+        while (i < rows.length) {
+            var role    = rows[i].role;
+            var blocks  = [];
+            while (i < rows.length && rows[i].role === role) {
+                var row = rows[i];
+                if (row.content_type === 'text') {
+                    blocks.push({ type: 'text', text: row.content_text });
+                } else if (row.content_type === 'tool_use') {
+                    var inp = {};
+                    try { inp = JSON.parse(row.tool_input_json); } catch(e) {}
+                    blocks.push({ type: 'tool_use', id: row.tool_use_id, name: row.tool_name, input: inp });
+                } else if (row.content_type === 'tool_result') {
+                    var tr = { type: 'tool_result', tool_use_id: row.tool_use_id, content: row.tool_result_json };
+                    if (row.is_error) { tr.is_error = true; }
+                    blocks.push(tr);
+                }
+                i++;
+            }
+            // If a turn has exactly one text block, flatten to a plain string (simpler for Claude)
+            if (blocks.length === 1 && blocks[0].type === 'text') {
+                messages.push({ role: role, content: blocks[0].text });
+            } else {
+                messages.push({ role: role, content: blocks });
+            }
+        }
+        return messages;
+    },
+
+    // ─── Private helpers ──────────────────────────────────────────────────────
+
+    _toolUseBlocks: function(response) {
+        var blocks = [];
+        var content = (response && response.content) ? response.content : [];
+        for (var i = 0; i < content.length; i++) {
+            if (content[i].type === 'tool_use') { blocks.push(content[i]); }
+        }
+        return blocks;
+    },
+
+    _nextSequence: function(sessionId) {
+        var gr = new GlideRecord('x_146833_claudec_0_message');
+        gr.addQuery('session_id', sessionId);
+        gr.orderByDesc('sequence');
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) {
+            return parseInt(gr.getValue('sequence'), 10) + 1;
+        }
+        return 1;
+    },
+
+    /**
+     * Persist one turn's content blocks to the message table.
+     * content can be: a plain string, a single block object, or an array of block objects.
+     * Returns the next available sequence number.
+     */
+    _persistTurn: function(sessionId, role, content, seq, requestId) {
+        var blocks = this._normaliseContent(content);
+        for (var i = 0; i < blocks.length; i++) {
+            var b  = blocks[i];
+            var gr = new GlideRecord('x_146833_claudec_0_message');
+            gr.initialize();
+            gr.setValue('session_id',   sessionId);
+            gr.setValue('sequence',     seq);
+            gr.setValue('role',         role);
+            gr.setValue('content_type', b.type || 'text');
+            if (b.type === 'text') {
+                gr.setValue('content_text', (b.text || '').substring(0, 8000));
+            } else if (b.type === 'tool_use') {
+                gr.setValue('tool_use_id',     b.id   || '');
+                gr.setValue('tool_name',       b.name || '');
+                gr.setValue('tool_input_json', JSON.stringify(b.input || {}).substring(0, 4000));
+            } else if (b.type === 'tool_result') {
+                gr.setValue('tool_use_id',      b.tool_use_id || '');
+                gr.setValue('tool_result_json', (b.content    || '').substring(0, 4000));
+                gr.setValue('is_error',         b.is_error ? true : false);
+            }
+            if (requestId) { gr.setValue('request_id', requestId); }
+            gr.insert();
+            seq++;
+        }
+        return seq;
+    },
+
+    /** Normalise any content shape into an array of block objects. */
+    _normaliseContent: function(content) {
+        if (!content) { return []; }
+        if (typeof content === 'string') {
+            return [{ type: 'text', text: content }];
+        }
+        if (Array.isArray(content)) { return content; }
+        if (content.type) { return [content]; }
+        return [{ type: 'text', text: JSON.stringify(content) }];
+    },
+
+    _upsertSession: function(sessionId, opts) {
+        var gr = new GlideRecord('x_146833_claudec_0_session');
+        gr.addQuery('session_id', sessionId);
+        gr.query();
+        if (!gr.next()) {
+            gr.initialize();
+            gr.setValue('session_id',   sessionId);
+            gr.setValue('status',       'active');
+            gr.setValue('turn_count',   0);
+            gr.setValue('total_input_tokens',  0);
+            gr.setValue('total_output_tokens', 0);
+            if (opts.system) { gr.setValue('system_prompt', opts.system.substring(0, 4000)); }
+            if (opts.model)  { gr.setValue('model', opts.model); }
+            try { gr.setValue('created_by_user', gs.getUserID()); } catch(e) {}
+            gr.insert();
+        }
+    },
+
+    _updateSession: function(sessionId, fields) {
+        var gr = new GlideRecord('x_146833_claudec_0_session');
+        gr.addQuery('session_id', sessionId);
+        gr.query();
+        if (!gr.next()) { return; }
+        if (fields.model)        { gr.setValue('model',  fields.model); }
+        if (fields.status)       { gr.setValue('status', fields.status); }
+        if (fields.system_prompt){ gr.setValue('system_prompt', fields.system_prompt.substring(0, 4000)); }
+        if (fields.total_input_tokens != null) {
+            var newIn  = parseInt(gr.getValue('total_input_tokens'),  10) + (fields.total_input_tokens  || 0);
+            var newOut = parseInt(gr.getValue('total_output_tokens'), 10) + (fields.total_output_tokens || 0);
+            gr.setValue('total_input_tokens',  newIn);
+            gr.setValue('total_output_tokens', newOut);
+        }
+        if (fields.turn_count_increment) {
+            var tc = parseInt(gr.getValue('turn_count'), 10) + 1;
+            gr.setValue('turn_count', tc);
+        }
+        gr.update();
+    },
+
+    type: 'ClaudeConversationManager'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-11 09:00:00</sys_created_on>
+        <sys_id>cm405d7893df8310945375dcebba1001</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ClaudeConversationManager</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_script_include_claude_conversation_manager</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-11 09:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
