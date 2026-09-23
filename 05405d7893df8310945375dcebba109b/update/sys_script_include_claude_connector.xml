@@ -244,7 +244,8 @@ ClaudeConnector.prototype = {
             system:      systemPrompt,
             temperature: temperature,
             model:       model,
-            max_tokens:  maxTok
+            max_tokens:  maxTok,
+            request_id:  stagingId
         });
 
         var durationMs = new GlideDateTime().getNumericValue() - startMs;

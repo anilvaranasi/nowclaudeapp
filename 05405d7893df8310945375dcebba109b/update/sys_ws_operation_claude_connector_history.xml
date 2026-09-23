@@ -14,7 +14,18 @@
         <requires_snc_internal_role>false</requires_snc_internal_role>
         <script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
 
-    var body      = request.body.data;
+    var body;
+    try {
+        body = request.body.data;
+    } catch (e1) {
+        try {
+            body = JSON.parse(request.body.dataString);
+        } catch (e2) {
+            body = {};
+        }
+    }
+    if (!body) { body = {}; }
+
     var sessionId = (body.session_id || '').toString().trim();
 
     if (!sessionId) {
@@ -25,6 +36,10 @@
 
     var logger  = new x_146833_claudec_0.ClaudeRequestLogger();
     var records = logger.getSessionHistory(sessionId);
+
+    // Load reconstructed message block conversation turns
+    var mgr      = new x_146833_claudec_0.ClaudeConversationManager();
+    var messages = mgr.load_messages(sessionId);
 
     // Compute session-level aggregates
     var totalIn  = 0;
@@ -38,12 +53,13 @@
 
     response.setStatus(200);
     response.setBody({
-        session_id:    sessionId,
-        request_count: records.length,
+        session_id:          sessionId,
+        request_count:       records.length,
         total_input_tokens:  totalIn,
         total_output_tokens: totalOut,
         total_duration_ms:   totalMs,
-        requests: records
+        messages:            messages,
+        requests:            records
     });
 
 })(request, response);

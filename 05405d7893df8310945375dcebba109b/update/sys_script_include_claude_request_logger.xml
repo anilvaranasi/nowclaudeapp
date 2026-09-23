@@ -73,6 +73,28 @@ ClaudeRequestLogger.prototype = {
     },
 
     /**
+     * Log an individual tool execution to x_146833_claudec_0_tool_log.
+     * @param {Object} params - { request_id, round_number, tool_name, input_json, output_text, execution_ms, success }
+     * @returns {string} sys_id of the created tool_log record
+     */
+    logToolExecution: function(params) {
+        params = params || {};
+        var gr = new GlideRecord('x_146833_claudec_0_tool_log');
+        gr.initialize();
+        if (params.request_id) {
+            gr.setValue('request', params.request_id);
+        }
+        gr.setValue('round_number', params.round_number || 1);
+        gr.setValue('tool_name',    params.tool_name || '');
+        gr.setValue('input_json',   (typeof params.input_json === 'string' ? params.input_json : JSON.stringify(params.input_json || {})).substring(0, 4000));
+        gr.setValue('output_text',  (params.output_text != null ? params.output_text + '' : '').substring(0, 4000));
+        gr.setValue('execution_ms', params.execution_ms || 0);
+        gr.setValue('success',      params.success !== false);
+        var sysId = gr.insert();
+        return sysId ? sysId.toString() : '';
+    },
+
+    /**
      * Return all logged requests for a given session as an array of plain objects.
      * @param {string} sessionId
      * @returns {Array}

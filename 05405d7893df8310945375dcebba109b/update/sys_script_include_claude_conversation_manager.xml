@@ -151,13 +151,17 @@ ClaudeConversationManager.prototype = {
     // ─── run_tools() ─────────────────────────────────────────────────────────
     /**
      * Dispatch all tool_use blocks from a response and return tool_result content blocks.
+     * Logs each execution to x_146833_claudec_0_tool_log when requestId / roundNumber are supplied in opts.
      * Mirrors the notebook's run_tools() / tool dispatch inline.
      *
      * @param {Object} response - Raw Claude response object
+     * @param {Object} [opts]   - Optional: { request_id, round_number }
      * @returns {Array}  Array of tool_result content blocks ready to send back
      */
-    run_tools: function(response) {
+    run_tools: function(response, opts) {
+        opts = opts || {};
         var connector    = new x_146833_claudec_0.ClaudeConnector();
+        var logger       = new x_146833_claudec_0.ClaudeRequestLogger();
         var toolResults  = [];
         var content      = (response && response.content) ? response.content : [];
 
@@ -165,19 +169,35 @@ ClaudeConversationManager.prototype = {
             var block = content[i];
             if (block.type !== 'tool_use') { continue; }
 
+            var startMs = new GlideDateTime().getNumericValue();
             var result, isError;
             try {
                 result  = connector.dispatch_tool(block.name, block.input);
-                isError = false;
+                isError = (typeof result === 'string' && result.indexOf('Error:') === 0);
             } catch(e) {
                 result  = e.toString();
                 isError = true;
             }
+            var execMs = new GlideDateTime().getNumericValue() - startMs;
+
+            var resultContent = (typeof result === 'string') ? result : JSON.stringify(result);
+
+            try {
+                logger.logToolExecution({
+                    request_id:   opts.request_id || '',
+                    round_number: opts.round_number || 1,
+                    tool_name:    block.name,
+                    input_json:   block.input,
+                    output_text:  resultContent,
+                    execution_ms: execMs,
+                    success:      !isError
+                });
+            } catch (logErr) {}
 
             var toolResult = {
                 type:        'tool_result',
                 tool_use_id: block.id,
-                content:     (typeof result === 'string') ? result : JSON.stringify(result)
+                content:     resultContent
             };
             if (isError) { toolResult.is_error = true; }
             toolResults.push(toolResult);
@@ -223,12 +243,14 @@ ClaudeConversationManager.prototype = {
         // Ensure session row exists
         this._upsertSession(sessionId, opts);
 
+        var requestId = opts.request_id || null;
+
         // Persist the initial user message(s) that were passed in but not yet saved
         // (sequence counter is fetched fresh each time from the DB)
         var seq = this._nextSequence(sessionId);
         var lastMsg = messages[messages.length - 1];
         if (lastMsg && lastMsg.role === 'user') {
-            seq = this._persistTurn(sessionId, 'user', lastMsg.content, seq, null);
+            seq = this._persistTurn(sessionId, 'user', lastMsg.content, seq, requestId);
         }
 
         while (toolRounds <= MAX_ROUNDS) {
@@ -255,7 +277,7 @@ ClaudeConversationManager.prototype = {
             this.add_assistant_message(messages, response);
 
             // Persist assistant turn blocks
-            seq = this._persistTurn(sessionId, 'assistant', response.content, seq, null);
+            seq = this._persistTurn(sessionId, 'assistant', response.content, seq, requestId);
 
             // If no tool_use → done
             var toolUseBlocks = this._toolUseBlocks(response);
@@ -265,13 +287,16 @@ ClaudeConversationManager.prototype = {
 
             // run_tools → tool_result blocks
             toolRounds += 1;
-            var toolResultBlocks = this.run_tools(response);
+            var toolResultBlocks = this.run_tools(response, {
+                request_id:   requestId,
+                round_number: toolRounds
+            });
 
             // add_user_message with tool_result blocks
             this.add_user_message(messages, toolResultBlocks);
 
             // Persist tool_result turn
-            seq = this._persistTurn(sessionId, 'user', toolResultBlocks, seq, null);
+            seq = this._persistTurn(sessionId, 'user', toolResultBlocks, seq, requestId);
 
             if (toolRounds >= MAX_ROUNDS) {
                 return { success: false, error: 'Tool-use loop exceeded maximum rounds (' + MAX_ROUNDS + ')' };
