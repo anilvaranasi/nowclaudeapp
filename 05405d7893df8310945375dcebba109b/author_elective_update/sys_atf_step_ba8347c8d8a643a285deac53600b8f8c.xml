@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>8</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>ba8347c8d8a643a285deac53600b8f8c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_ba8347c8d8a643a285deac53600b8f8c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=ba8347c8d8a643a285deac53600b8f8c"/>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>ba8347c8d8a643a285deac53600b8f8c</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:32</sys_created_on>
+        <sys_id>351b583ed80b4ee981ebad0600f1cfe3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:32</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>ba8347c8d8a643a285deac53600b8f8c</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:32</sys_created_on>
+        <sys_id>6863aef2a8ba42e482e4fdc8f37d2d74</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:32</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {
+    var gr = new GlideRecord('x_146833_claudec_0_request');
+    gr.addQuery('session_id', 'atf_chat_e2e_test');
+    gr.orderByDesc('sys_created_on');
+    gr.setLimit(1);
+    gr.query();
+
+    if (!gr.next()) {
+        assertEqual({ name: 'Staging record exists', shouldbe: 'found', value: 'not_found' });
+        return;
+    }
+
+    var status       = gr.getValue('status') || '';
+    var model        = gr.getValue('model') || '';
+    var inputTokens  = parseInt(gr.getValue('input_tokens'), 10) || 0;
+    var outputTokens = parseInt(gr.getValue('output_tokens'), 10) || 0;
+    var durationMs   = parseInt(gr.getValue('duration_ms'), 10) || 0;
+    var prompt       = gr.getValue('prompt') || '';
+    var responseText = gr.getValue('response_text') || '';
+
+    assertEqual({ name: 'Status is success',        shouldbe: 'success', value: status });
+    assertEqual({ name: 'Model is populated',        shouldbe: true,      value: model.length &gt; 0 });
+    assertEqual({ name: 'Input tokens &gt; 0',          shouldbe: true,      value: inputTokens &gt; 0 });
+    assertEqual({ name: 'Output tokens &gt; 0',         shouldbe: true,      value: outputTokens &gt; 0 });
+    assertEqual({ name: 'Duration recorded',         shouldbe: true,      value: durationMs &gt; 0 });
+    assertEqual({ name: 'Prompt was captured',       shouldbe: true,      value: prompt.length &gt; 0 });
+    assertEqual({ name: 'Response text was captured', shouldbe: true,     value: responseText.length &gt; 0 });
+
+    stepResult.setOutputMessage(
+        'Staging record verified: status=' + status +
+        ', model=' + model +
+        ', in_tokens=' + inputTokens +
+        ', out_tokens=' + outputTokens +
+        ', duration_ms=' + durationMs
+    );
+})(outputs, steps, params, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="claudecodehelper">05405d7893df8310945375dcebba109b</application>
+        <file_path/>
+        <instance_id>e6fc1c2c1b3a35506a85eb9b2d4bcb85</instance_id>
+        <instance_name>dev224768</instance_name>
+        <name>sys_atf_step_ba8347c8d8a643a285deac53600b8f8c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>8</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>ba8347c8d8a643a285deac53600b8f8c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_ba8347c8d8a643a285deac53600b8f8c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=ba8347c8d8a643a285deac53600b8f8c"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>ba8347c8d8a643a285deac53600b8f8c</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:32</sys_created_on>
+        <sys_id>351b583ed80b4ee981ebad0600f1cfe3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:32</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>ba8347c8d8a643a285deac53600b8f8c</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:32</sys_created_on>
+        <sys_id>6863aef2a8ba42e482e4fdc8f37d2d74</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:32</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {
+    var gr = new GlideRecord('x_146833_claudec_0_request');
+    gr.addQuery('session_id', 'atf_chat_e2e_test');
+    gr.orderByDesc('sys_created_on');
+    gr.setLimit(1);
+    gr.query();
+
+    if (!gr.next()) {
+        assertEqual({ name: 'Staging record exists', shouldbe: 'found', value: 'not_found' });
+        return;
+    }
+
+    var status       = gr.getValue('status') || '';
+    var model        = gr.getValue('model') || '';
+    var inputTokens  = parseInt(gr.getValue('input_tokens'), 10) || 0;
+    var outputTokens = parseInt(gr.getValue('output_tokens'), 10) || 0;
+    var durationMs   = parseInt(gr.getValue('duration_ms'), 10) || 0;
+    var prompt       = gr.getValue('prompt') || '';
+    var responseText = gr.getValue('response_text') || '';
+
+    assertEqual({ name: 'Status is success',        shouldbe: 'success', value: status });
+    assertEqual({ name: 'Model is populated',        shouldbe: true,      value: model.length &gt; 0 });
+    assertEqual({ name: 'Input tokens &gt; 0',          shouldbe: true,      value: inputTokens &gt; 0 });
+    assertEqual({ name: 'Output tokens &gt; 0',         shouldbe: true,      value: outputTokens &gt; 0 });
+    assertEqual({ name: 'Duration recorded',         shouldbe: true,      value: durationMs &gt; 0 });
+    assertEqual({ name: 'Prompt was captured',       shouldbe: true,      value: prompt.length &gt; 0 });
+    assertEqual({ name: 'Response text was captured', shouldbe: true,     value: responseText.length &gt; 0 });
+
+    stepResult.setOutputMessage(
+        'Staging record verified: status=' + status +
+        ', model=' + model +
+        ', in_tokens=' + inputTokens +
+        ', out_tokens=' + outputTokens +
+        ', duration_ms=' + durationMs
+    );
+})(outputs, steps, params, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>]]></payload>
+        <payload_hash>586028362</payload_hash>
+        <record_name>Run Server Side Script</record_name>
+        <reverted_from/>
+        <source>bb86b1bc836f4390b96f6ed0deaad367</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:25:32</sys_created_on>
+        <sys_id>2496f1bc836f4390b96f6ed0deaad372</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0ccb9f02b0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:25:32</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>6c96f1bc756f4390b3c4189cea44a971</update_guid>
+        <update_guid_history>6c96f1bc756f4390b3c4189cea44a971:0,36b4bd78646f43903965e1d2e1cab93e:-972068985,5b947978896f43906b849a0a3e119a1f:-2097052159,5a943978c96f43908d936b6df692c462:711929440,a094b578b76f43903da7146915c90ce4:-774056257,47847578816f439032c1d1035509b674:2034925342,592595102de74f50886864d50b0faad0:-825034012,0e3218506baf0f50f27168c4b4607f39:-1182886299,1da359d846a74f50aafce6cd9bec9e65:0,49a319d808a74f504d2605320b4139d3:-1549561802,0e3218506baf0f50f27168c4b4607f39:-1182886299,d012c89c68eb0f50612053d35ceedc63:-1119063674</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:26:11</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>e3afe626bf0847f68ac062a308878e64</sys_id>
+        <sys_metadata>ba8347c8d8a643a285deac53600b8f8c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_scope_delete display_value="">12cf6d8ff04c450a8f4da7bd2e0a5f11</sys_scope_delete>
+        <sys_update_name>sys_atf_step_ba8347c8d8a643a285deac53600b8f8c</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_ba8347c8d8a643a285deac53600b8f8c">2496f1bc836f4390b96f6ed0deaad372</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:26:11</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

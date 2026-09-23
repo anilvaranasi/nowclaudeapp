@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Assert Response Payload</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>7</order>
+        <step_config display_value="Assert Response Payload">d53e40d59f132200ef4afa7dc67fcfc7</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>2a3d4ea1ece54785bf465129458015f8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Response Payload</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_2a3d4ea1ece54785bf465129458015f8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=2a3d4ea1ece54785bf465129458015f8"/>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>2a3d4ea1ece54785bf465129458015f8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>33faab13aede40c98ecc7fc2e3ccd0e6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>contains</value>
+        <variable display_value="Operation">ccae44d59f132200ef4afa7dc67fcf1e</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>2a3d4ea1ece54785bf465129458015f8</document_key>
+        <order>110</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>692f9d16286c4f92bde93a835542a5a0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>inputTokens</value>
+        <variable display_value="Response body">f0eec4d59f132200ef4afa7dc67fcf6d</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="DELETE" query="table=var__m_atf_input_variable_d53e40d59f132200ef4afa7dc67fcfc7^id=2a3d4ea1ece54785bf465129458015f8"/>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="claudecodehelper">05405d7893df8310945375dcebba109b</application>
+        <file_path/>
+        <instance_id>e6fc1c2c1b3a35506a85eb9b2d4bcb85</instance_id>
+        <instance_name>dev224768</instance_name>
+        <name>sys_atf_step_2a3d4ea1ece54785bf465129458015f8</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Assert Response Payload</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>7</order>
+        <step_config display_value="Assert Response Payload">d53e40d59f132200ef4afa7dc67fcfc7</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>2a3d4ea1ece54785bf465129458015f8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Response Payload</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_2a3d4ea1ece54785bf465129458015f8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=2a3d4ea1ece54785bf465129458015f8"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>2a3d4ea1ece54785bf465129458015f8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>33faab13aede40c98ecc7fc2e3ccd0e6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>contains</value>
+        <variable display_value="Operation">ccae44d59f132200ef4afa7dc67fcf1e</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>2a3d4ea1ece54785bf465129458015f8</document_key>
+        <order>110</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>692f9d16286c4f92bde93a835542a5a0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>inputTokens</value>
+        <variable display_value="Response body">f0eec4d59f132200ef4afa7dc67fcf6d</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_d53e40d59f132200ef4afa7dc67fcfc7^id=2a3d4ea1ece54785bf465129458015f8"/>
+</record_update>]]></payload>
+        <payload_hash>791913123</payload_hash>
+        <record_name>Assert Response Payload</record_name>
+        <reverted_from/>
+        <source>bb86b1bc836f4390b96f6ed0deaad367</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:25:32</sys_created_on>
+        <sys_id>6896f1bc836f4390b96f6ed0deaad35c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0ccb9ef3b0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:25:32</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>a096f1bc6b6f43909392a1a21dbdbb5c</update_guid>
+        <update_guid_history>a096f1bc6b6f43909392a1a21dbdbb5c:0,3cf4b5b80f6f4390ea85fffbd85e8b31:-440147191,c3e475b8bc6f43909cef502590f86d24:2034090515,1f947978636f43904f190cc8f0c85217:-924267022,1e943978ac6f439030a572b4d148635a:412342737,d494b578496f4390eb44e3a4c94549c3:1748952496,c78475788e6f4390e963260dcc11c16c:-1209405041,c5259510f6e74f503682d69e097492a4:1203984660,0e32d450daaf0f50b1ae7717df1795db:934884277,9da359d896a74f50f7d68d84b2573255:0,81a319d879a74f5027f897be34b36dc0:-1809731561,0e32d450daaf0f50b1ae7717df1795db:934884277,1012c89ca1eb0f50ce375e620b758351:665783894</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:26:10</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>0086e37e9b4d421e9418e1cd6159d099</sys_id>
+        <sys_metadata>2a3d4ea1ece54785bf465129458015f8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Response Payload</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_scope_delete display_value="">12cf6d8ff04c450a8f4da7bd2e0a5f11</sys_scope_delete>
+        <sys_update_name>sys_atf_step_2a3d4ea1ece54785bf465129458015f8</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_2a3d4ea1ece54785bf465129458015f8">6896f1bc836f4390b96f6ed0deaad35c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:26:10</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

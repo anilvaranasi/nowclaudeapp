@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Send REST Request - Inbound</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>3</order>
+        <step_config display_value="Send REST Request - Inbound">e00571a10b3222000b7da95e93673a8f</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>02b2509a955740ce863ffde2e82017d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Send REST Request - Inbound</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_02b2509a955740ce863ffde2e82017d4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=02b2509a955740ce863ffde2e82017d4"/>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>2b962533103743768509adf21240433f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value/>
+        <variable display_value="Basic authentication">020a6af09fd32200ef4afa7dc67fcfec</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>3d2e12c18e0645d988e226acc8a6f9d0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value/>
+        <variable display_value="Mutual Authentication">89ad06b543010210b6f9a0246bb8f2d7</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>565d98aed14647108f31334f3c5546c0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value/>
+        <variable display_value="Query Parameters">58408e250b3222000b7da95e93673a5c</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>6026e19e176744c3a51e03fcc2f7d610</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>post</value>
+        <variable display_value="Method">59877da10b3222000b7da95e93673a56</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>5</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>8d69b4f8ea84463eb631cdd736141f1f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>{"session_id":"atf_chat_e2e_test","prompt":"Reply with exactly: Hello from Claude","model":"claude-sonnet-5"}</value>
+        <variable display_value="Body">81e042650b3222000b7da95e93673aa2</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>a4e74ce6453d4761920b51fed9ecb7ff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>basic</value>
+        <variable display_value="Authentication Type">6cdd0ab543010210b6f9a0246bb8f2f2</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>b8b25c7352404312ac60f2eaff5c7d6e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>/api/x_146833_claudec_0/claude_connector_api/chat</value>
+        <variable display_value="Path">50bff9250b3222000b7da95e93673a9b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>4</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>be4b2fb108c8404f877cb0b1093301aa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>{"Content-Type":"application/json"}</value>
+        <variable display_value="Headers">cec002650b3222000b7da95e93673aae</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="DELETE" query="table=var__m_atf_input_variable_e00571a10b3222000b7da95e93673a8f^id=02b2509a955740ce863ffde2e82017d4"/>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="claudecodehelper">05405d7893df8310945375dcebba109b</application>
+        <file_path/>
+        <instance_id>e6fc1c2c1b3a35506a85eb9b2d4bcb85</instance_id>
+        <instance_name>dev224768</instance_name>
+        <name>sys_atf_step_02b2509a955740ce863ffde2e82017d4</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Send REST Request - Inbound</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>3</order>
+        <step_config display_value="Send REST Request - Inbound">e00571a10b3222000b7da95e93673a8f</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>02b2509a955740ce863ffde2e82017d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Send REST Request - Inbound</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_02b2509a955740ce863ffde2e82017d4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=02b2509a955740ce863ffde2e82017d4"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>2b962533103743768509adf21240433f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value/>
+        <variable display_value="Basic authentication">020a6af09fd32200ef4afa7dc67fcfec</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>3d2e12c18e0645d988e226acc8a6f9d0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value/>
+        <variable display_value="Mutual Authentication">89ad06b543010210b6f9a0246bb8f2d7</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>565d98aed14647108f31334f3c5546c0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value/>
+        <variable display_value="Query Parameters">58408e250b3222000b7da95e93673a5c</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>6026e19e176744c3a51e03fcc2f7d610</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>post</value>
+        <variable display_value="Method">59877da10b3222000b7da95e93673a56</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>5</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>8d69b4f8ea84463eb631cdd736141f1f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>{"session_id":"atf_chat_e2e_test","prompt":"Reply with exactly: Hello from Claude","model":"claude-sonnet-5"}</value>
+        <variable display_value="Body">81e042650b3222000b7da95e93673aa2</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>a4e74ce6453d4761920b51fed9ecb7ff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>basic</value>
+        <variable display_value="Authentication Type">6cdd0ab543010210b6f9a0246bb8f2f2</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>b8b25c7352404312ac60f2eaff5c7d6e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>/api/x_146833_claudec_0/claude_connector_api/chat</value>
+        <variable display_value="Path">50bff9250b3222000b7da95e93673a9b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>02b2509a955740ce863ffde2e82017d4</document_key>
+        <order>4</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>be4b2fb108c8404f877cb0b1093301aa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>{"Content-Type":"application/json"}</value>
+        <variable display_value="Headers">cec002650b3222000b7da95e93673aae</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_e00571a10b3222000b7da95e93673a8f^id=02b2509a955740ce863ffde2e82017d4"/>
+</record_update>]]></payload>
+        <payload_hash>-1341780635</payload_hash>
+        <record_name>Send REST Request - Inbound</record_name>
+        <reverted_from/>
+        <source/>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:25:32</sys_created_on>
+        <sys_id>e896f1bc836f4390b96f6ed0deaad350</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0ccb9eebd0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:25:32</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>a896f1bc8e6f439086639d27ebf8f150</update_guid>
+        <update_guid_history>9e943978696f4390e2b44481165b9766:-1970805486,41259510a3e74f50c8491f76768ff093:2039019190,bd32d4504daf0f50d68611c3b3a286c9:1346760919,4da319d8aba74f504521bfba194f9295:-1030932525,bd32d4504daf0f50d68611c3b3a286c9:1346760919,1812c89c12eb0f50dca9c29ab4a71f45:654502648</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:26:10</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>083f002b5d0e4433a7549ba197a5ae19</sys_id>
+        <sys_metadata>02b2509a955740ce863ffde2e82017d4</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Send REST Request - Inbound</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_scope_delete display_value="">12cf6d8ff04c450a8f4da7bd2e0a5f11</sys_scope_delete>
+        <sys_update_name>sys_atf_step_02b2509a955740ce863ffde2e82017d4</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_02b2509a955740ce863ffde2e82017d4">e896f1bc836f4390b96f6ed0deaad350</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:26:10</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

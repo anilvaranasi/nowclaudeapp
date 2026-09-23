@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Assert Status Code</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>4</order>
+        <step_config display_value="Assert Status Code">2f4fa7309f132200ef4afa7dc67fcf0f</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>90d421873d764f6ebbdf3b8bb27c1e27</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Status Code</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_90d421873d764f6ebbdf3b8bb27c1e27</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=90d421873d764f6ebbdf3b8bb27c1e27"/>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>90d421873d764f6ebbdf3b8bb27c1e27</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>82de317090794e93b7fbc6f9bf4de1c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>equals</value>
+        <variable display_value="Operation">1d94cb1f3b8032000774229c93efc419</variable>
+    </sys_variable_value>
+    <sys_variable_value action="DELETE">
+        <document>sys_atf_step</document>
+        <document_key>90d421873d764f6ebbdf3b8bb27c1e27</document_key>
+        <order>110</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>e0248295f4c646c6a3f290c9e79e0bb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>200</value>
+        <variable display_value="Status code">9f5f67709f132200ef4afa7dc67fcf94</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="DELETE" query="table=var__m_atf_input_variable_2f4fa7309f132200ef4afa7dc67fcf0f^id=90d421873d764f6ebbdf3b8bb27c1e27"/>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="claudecodehelper">05405d7893df8310945375dcebba109b</application>
+        <file_path/>
+        <instance_id>e6fc1c2c1b3a35506a85eb9b2d4bcb85</instance_id>
+        <instance_name>dev224768</instance_name>
+        <name>sys_atf_step_90d421873d764f6ebbdf3b8bb27c1e27</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Assert Status Code</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>4</order>
+        <step_config display_value="Assert Status Code">2f4fa7309f132200ef4afa7dc67fcf0f</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>90d421873d764f6ebbdf3b8bb27c1e27</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Status Code</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_90d421873d764f6ebbdf3b8bb27c1e27</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=90d421873d764f6ebbdf3b8bb27c1e27"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>90d421873d764f6ebbdf3b8bb27c1e27</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>82de317090794e93b7fbc6f9bf4de1c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>equals</value>
+        <variable display_value="Operation">1d94cb1f3b8032000774229c93efc419</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>90d421873d764f6ebbdf3b8bb27c1e27</document_key>
+        <order>110</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 13:42:31</sys_created_on>
+        <sys_id>e0248295f4c646c6a3f290c9e79e0bb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:42:31</sys_updated_on>
+        <value>200</value>
+        <variable display_value="Status code">9f5f67709f132200ef4afa7dc67fcf94</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_2f4fa7309f132200ef4afa7dc67fcf0f^id=90d421873d764f6ebbdf3b8bb27c1e27"/>
+</record_update>]]></payload>
+        <payload_hash>-1118856039</payload_hash>
+        <record_name>Assert Status Code</record_name>
+        <reverted_from/>
+        <source>bb86b1bc836f4390b96f6ed0deaad367</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:25:32</sys_created_on>
+        <sys_id>6c96f1bc836f4390b96f6ed0deaad362</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0ccb9ef7d0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:25:32</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>a496f1bc066f43908a7af246affb0c62</update_guid>
+        <update_guid_history>a496f1bc066f43908a7af246affb0c62:0,e494b578c46f439058628db99886e0e8:-863435730,81259510dde74f509b103c46c298d4b8:-1784032268,8e32d45035af0f5013df418d21258be4:280056789,dda359d824a74f507205976f4c9c1e5b:0,41a319d8c1a74f504de8a32e4dcaf29e:91948793,8e32d45035af0f5013df418d21258be4:280056789,dc12c89c25eb0f501bb9881df8f6d656:-1950821450</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:26:10</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>018136aad6304e87a6bb33dce2ad70a9</sys_id>
+        <sys_metadata>90d421873d764f6ebbdf3b8bb27c1e27</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Status Code</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_scope_delete display_value="">12cf6d8ff04c450a8f4da7bd2e0a5f11</sys_scope_delete>
+        <sys_update_name>sys_atf_step_90d421873d764f6ebbdf3b8bb27c1e27</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_90d421873d764f6ebbdf3b8bb27c1e27">6c96f1bc836f4390b96f6ed0deaad362</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:26:10</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

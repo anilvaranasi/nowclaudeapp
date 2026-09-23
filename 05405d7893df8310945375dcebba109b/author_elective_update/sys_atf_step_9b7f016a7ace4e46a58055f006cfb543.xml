@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="DELETE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Assert Response JSON Payload Is Valid</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>5</order>
+        <step_config display_value="Assert Response JSON Payload Is Valid">f100f7079f132200ef4afa7dc67fcf42</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>9b7f016a7ace4e46a58055f006cfb543</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Response JSON Payload Is Valid</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_9b7f016a7ace4e46a58055f006cfb543</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="DELETE" query="document_key=9b7f016a7ace4e46a58055f006cfb543"/>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="claudecodehelper">05405d7893df8310945375dcebba109b</application>
+        <file_path/>
+        <instance_id>e6fc1c2c1b3a35506a85eb9b2d4bcb85</instance_id>
+        <instance_name>dev224768</instance_name>
+        <name>sys_atf_step_9b7f016a7ace4e46a58055f006cfb543</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <callable_outputs/>
+        <copied_from/>
+        <description/>
+        <display_name>Assert Response JSON Payload Is Valid</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>5</order>
+        <step_config display_value="Assert Response JSON Payload Is Valid">f100f7079f132200ef4afa7dc67fcf42</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by/>
+        <sys_created_on/>
+        <sys_id>9b7f016a7ace4e46a58055f006cfb543</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Response JSON Payload Is Valid</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_atf_step_9b7f016a7ace4e46a58055f006cfb543</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 13:39:12</sys_updated_on>
+        <table/>
+        <test display_value="Claude Chat API - E2E with Staging Table">322a835f138a405ba70641d19c7340ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=9b7f016a7ace4e46a58055f006cfb543"/>
+</record_update>]]></payload>
+        <payload_hash>1071218961</payload_hash>
+        <record_name>Assert Response JSON Payload Is Valid</record_name>
+        <reverted_from/>
+        <source>bb86b1bc836f4390b96f6ed0deaad367</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:25:32</sys_created_on>
+        <sys_id>2896f1bc836f4390b96f6ed0deaad36c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0ccb9efe90000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:25:32</sys_updated_on>
+        <type>Test Step</type>
+        <update_guid>6096f1bcf06f43906be70c8ff6a85b6c</update_guid>
+        <update_guid_history>6096f1bcf06f43906be70c8ff6a85b6c:0,0b847578186f4390f9c80f1982b5ba78:-659625395,1125951071e74f50e300887b1d97f5c7:836493524,0a3218509faf0f5082b9a8c782d21122:-2039149741,55a359d860a74f50051a4b16da1e4e60:0,cda319d83ba74f509e550bce9e6645a4:240458572,0a3218509faf0f5082b9a8c782d21122:-2039149741,1412c89c53eb0f509ec7b307c3d0b55b:-619825710</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:26:11</sys_created_on>
+        <sys_db_object display_value="" name="sys_atf_step">sys_atf_step</sys_db_object>
+        <sys_id>14d28a98530d4e36a4cce5c398164b84</sys_id>
+        <sys_metadata>9b7f016a7ace4e46a58055f006cfb543</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Assert Response JSON Payload Is Valid</sys_name>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_scope_delete display_value="">12cf6d8ff04c450a8f4da7bd2e0a5f11</sys_scope_delete>
+        <sys_update_name>sys_atf_step_9b7f016a7ace4e46a58055f006cfb543</sys_update_name>
+        <sys_update_version display_value="sys_atf_step_9b7f016a7ace4e46a58055f006cfb543">2896f1bc836f4390b96f6ed0deaad36c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:26:11</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
