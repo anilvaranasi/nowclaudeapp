@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
     <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
         <description>Default maximum output tokens for Claude API requests. Can be overridden per-request from the UI.</description>
         <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
         <name>x_146833_claudec_0.max_tokens</name>
-        <private>false</private>
         <read_roles/>
         <suffix/>
-        <type>integer</type>
-        <value>4096</value>
-        <write_roles>x_146833_claudec_0.admin</write_roles>
         <sys_class_name>sys_properties</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-10 16:30:00</sys_created_on>
@@ -21,5 +19,9 @@
         <sys_update_name>sys_properties_x_146833_claudec_0_max_tokens</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <type>integer</type>
+        <value>4096</value>
+        <write_roles>x_146833_claudec_0.admin</write_roles>
     </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=a4405d7893df8310945375dcebba1004"/>
 </record_update>

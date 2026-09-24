@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column">
     <sp_column action="INSERT_OR_UPDATE">
-        <color>none</color>
-        <css_class/>
+        <aria_label/>
+        <class_name/>
         <order>100</order>
-        <row display_value="Claude Chat Page">d5405d7893df8310945375dcebba1005</row>
-        <sp display_value="Claude Chat Portal">d0405d7893df8310945375dcebba1000</sp>
+        <semantic_tag/>
+        <size/>
         <size_lg>12</size_lg>
-        <size_md>12</size_md>
         <size_sm>12</size_sm>
         <size_xs>12</size_xs>
+        <sp_row/>
         <sys_class_name>sp_column</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-10 16:30:00</sys_created_on>

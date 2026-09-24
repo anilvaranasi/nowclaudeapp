@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Prompt evaluation framework ported from the 001_prompting notebook. Generates test datasets via Claude (generate_dataset), grades model outputs against criteria (grade_output), and persists results in x_146833_claudec_0_eval_case. Also provides a simple {placeholder} template renderer.</description>
+        <mobile_callable>false</mobile_callable>
         <name>ClaudePromptEvaluator</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var ClaudePromptEvaluator = Class.create();
 ClaudePromptEvaluator.prototype = {
     initialize: function() {},

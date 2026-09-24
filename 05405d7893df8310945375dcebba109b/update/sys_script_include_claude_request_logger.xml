@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Writes and updates staging records in x_146833_claudec_0_request. Called by ClaudeConnector to create an audit trail of every API interaction including tokens, duration, model, status, and any error detail.</description>
+        <mobile_callable>false</mobile_callable>
         <name>ClaudeRequestLogger</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var ClaudeRequestLogger = Class.create();
 ClaudeRequestLogger.prototype = {
     initialize: function() {},

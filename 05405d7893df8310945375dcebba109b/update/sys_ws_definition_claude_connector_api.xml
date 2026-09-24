@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition">
     <sys_ws_definition action="INSERT_OR_UPDATE">
         <active>true</active>
-        <base_uri>claude_connector_api</base_uri>
+        <base_uri>/api/x_146833_claudec_0/claude_connector_api</base_uri>
         <consumes>application/json</consumes>
         <consumes_customized>false</consumes_customized>
-        <description>Scripted REST API providing /chat and /clear endpoints for the Claude frontend UI page.</description>
+        <default_version>No active default version</default_version>
         <doc_link/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <is_versioned>false</is_versioned>
         <name>Claude Connector API</name>
+        <namespace>x_146833_claudec_0</namespace>
         <produces>application/json</produces>
         <produces_customized>false</produces_customized>
         <service_id>claude_connector_api</service_id>
+        <short_description/>
         <sys_class_name>sys_ws_definition</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-10 16:30:00</sys_created_on>

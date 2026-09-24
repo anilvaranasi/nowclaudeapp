@@ -3,15 +3,10 @@
         <active>true</active>
         <consumes>application/json</consumes>
         <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
         <http_method>POST</http_method>
         <name>history</name>
-        <produces>application/json</produces>
-        <produces_customized>false</produces_customized>
-        <relative_path>/history</relative_path>
-        <request_example/>
-        <requires_acl_authorization>true</requires_acl_authorization>
-        <requires_authentication>true</requires_authentication>
-        <requires_snc_internal_role>false</requires_snc_internal_role>
         <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
 
     var body;
@@ -64,6 +59,16 @@
 
 })(request, response);
 ]]></operation_script>
+        <operation_uri>/api/x_146833_claudec_0/claude_connector_api/history</operation_uri>
+        <produces>application/json</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/history</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>false</requires_snc_internal_role>
+        <short_description/>
+        <support_trailing_slash>false</support_trailing_slash>
         <sys_class_name>sys_ws_operation</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-10 16:30:00</sys_created_on>

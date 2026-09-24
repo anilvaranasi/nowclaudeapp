@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
     <sp_container action="INSERT_OR_UPDATE">
+        <aria_label/>
         <background_color/>
         <background_image/>
+        <background_style/>
         <bootstrap_alt>false</bootstrap_alt>
-        <css_class/>
+        <class_name/>
+        <container_class_name/>
+        <name/>
         <order>100</order>
-        <page display_value="Claude Chat Page">d3405d7893df8310945375dcebba1003</page>
-        <style/>
-        <title/>
-        <width>100%</width>
+        <semantic_tag/>
+        <sp_page/>
+        <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-10 16:30:00</sys_created_on>
@@ -21,5 +24,7 @@
         <sys_update_name>sp_container_claude_chat</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-10 16:30:00</sys_updated_on>
+        <title/>
+        <width>100%</width>
     </sp_container>
 </record_update>

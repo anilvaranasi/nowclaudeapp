@@ -6,7 +6,9 @@
         <caller_access/>
         <client_callable>false</client_callable>
         <description>Calls the Anthropic-compatible Claude API. Sends a full conversation history and returns the raw response body string. Supports agentic tool-use loop with datetime and reminder tools. Used by the Scripted REST API resources.</description>
+        <mobile_callable>false</mobile_callable>
         <name>ClaudeConnector</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var ClaudeConnector = Class.create();
 ClaudeConnector.prototype = {
     initialize: function() {

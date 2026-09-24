@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="total_input_tokens" label="Total Input Tokens" language="en" table="x_146833_claudec_0_session">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>total_input_tokens</element>
+            <help/>
+            <hint/>
+            <label>Total Input Tokens</label>
+            <language>en</language>
+            <name>x_146833_claudec_0_session</name>
+            <plural>Total Input Tokens</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-21 13:42:43</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Total Input Tokens</sys_name>
+            <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+            <sys_update_name>sys_documentation_x_146833_claudec_0_session_total_input_tokens_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-21 13:42:43</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

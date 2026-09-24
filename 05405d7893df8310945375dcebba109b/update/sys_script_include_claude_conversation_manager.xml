@@ -11,7 +11,9 @@ add_assistant_message() handle both plain text and full response objects; text_f
 extracts text blocks; run_conversation() is the agentic loop that persists every content block
 (user text, assistant text, tool_use, tool_result) to x_146833_claudec_0_message and maintains
 the x_146833_claudec_0_session parent record.</description>
+        <mobile_callable>false</mobile_callable>
         <name>ClaudeConversationManager</name>
+        <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var ClaudeConversationManager = Class.create();
 ClaudeConversationManager.prototype = {
 
