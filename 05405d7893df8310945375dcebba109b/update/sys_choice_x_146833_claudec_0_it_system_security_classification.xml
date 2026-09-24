@@ -4,263 +4,87 @@
         <element>security_classification</element>
         <hint/>
         <inactive>false</inactive>
-        <label>n</label>
+        <label>Unclassified</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>c</sequence>
+        <sequence>10</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>a75d7053cf205954dda0cb564b2fbf6a</sys_id>
+        <sys_id>b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e8</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_u</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_unclassified</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>u</value>
+        <value>unclassified</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>security_classification</element>
         <hint/>
         <inactive>false</inactive>
-        <label>n</label>
+        <label>Restricted</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>c</sequence>
+        <sequence>20</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>d978aad19faf2149f9163c43c400d1be</sys_id>
+        <sys_id>c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f9</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_U</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_restricted</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>U</value>
+        <value>restricted</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>security_classification</element>
         <hint/>
         <inactive>false</inactive>
-        <label></label>
+        <label>Confidential</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
+        <sequence>30</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>86fdd6251d8951c8b5815729fce5532e</sys_id>
+        <sys_id>d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a4</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_100</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_confidential</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>100</value>
+        <value>confidential</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>security_classification</element>
         <hint/>
         <inactive>false</inactive>
-        <label>e</label>
+        <label>Secret</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>s</sequence>
+        <sequence>40</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>8c927d1984e22a82ae74d308c7388ecf</sys_id>
+        <sys_id>e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_r</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_secret</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>r</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>e</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>s</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>c586cfeab2a1440d9f8b04aeb08b5b47</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_R</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>R</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label></label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>b7f6a0fd26d49627144e7a5c774df5f5</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_200</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>200</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>o</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>n</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>e276da1ebc8eca50fefdc640eb6a5b1d</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_c</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>c</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>o</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>n</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>b186c5027336fad466e981d2da78f7ad</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_C</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>C</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label></label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>15b2ad0690fdaab30d03f28996ddd899</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_300</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>300</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>e</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>c</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>8a57643b227c8a9a5d5b96178dd981c4</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_s</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>s</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>e</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>c</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>c0136b9cad9d3e5f5eebe3249ab056a0</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_S</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>S</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>security_classification</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label></label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>a9477893a8e9908fd93b7e24d0ca95f3</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_security_classification_400</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>400</value>
+        <value>secret</value>
     </sys_choice>
 </record_update>

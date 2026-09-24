@@ -4,10 +4,10 @@
         <element>system_criticality</element>
         <hint/>
         <inactive>false</inactive>
-        <label>r</label>
+        <label>Critical</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>i</sequence>
+        <sequence>10</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
@@ -16,64 +16,20 @@
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_c</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_critical</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>c</value>
+        <value>critical</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>system_criticality</element>
         <hint/>
         <inactive>false</inactive>
-        <label>r</label>
+        <label>Non-Critical</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>i</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>d564c9f3b89611b11f8a60ede6a60be9</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_C</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>C</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>system_criticality</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label></label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>6a69b39d60138e13ad8179aa5f2ac660</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_100</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>100</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>system_criticality</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>o</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>n</sequence>
+        <sequence>20</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
@@ -82,53 +38,31 @@
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_n</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_non_critical</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>n</value>
+        <value>non_critical</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>system_criticality</element>
         <hint/>
         <inactive>false</inactive>
-        <label>o</label>
+        <label>Mission Critical</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>n</sequence>
+        <sequence>30</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>6b05a9013f9866362c7f4ff8e0b32a9c</sys_id>
+        <sys_id>d564c9f3b89611b11f8a60ede6a60be9</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_N</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_mission_critical</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>N</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>system_criticality</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label></label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>5ade147281b9ba20fff286ace721a7ed</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_system_criticality_200</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>200</value>
+        <value>mission_critical</value>
     </sys_choice>
 </record_update>

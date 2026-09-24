@@ -4,10 +4,10 @@
         <element>operational_status</element>
         <hint/>
         <inactive>false</inactive>
-        <label>p</label>
+        <label>Operational</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>e</sequence>
+        <sequence>10</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
@@ -16,20 +16,20 @@
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_o</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_operational</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>o</value>
+        <value>operational</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>operational_status</element>
         <hint/>
         <inactive>false</inactive>
-        <label>p</label>
+        <label>Non-Operational</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>e</sequence>
+        <sequence>20</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
@@ -38,108 +38,20 @@
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_O</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_non_operational</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>O</value>
+        <value>non_operational</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>operational_status</element>
         <hint/>
         <inactive>false</inactive>
-        <label></label>
+        <label>Decommissioned</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>e65f0a2cf4738053266442b012fac5a0</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_100</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>100</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>operational_status</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>o</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>n</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>3d3407eb88d3d3f4dda2698ddda3d233</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_n</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>n</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>operational_status</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>o</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>n</sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>1821780c80a9bd9e87040b32754ca84f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_N</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>N</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>operational_status</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label></label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>8d38464989131e0629efbd89f955b536</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_200</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>200</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>operational_status</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label>e</label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence>c</sequence>
+        <sequence>30</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
@@ -148,53 +60,31 @@
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_d</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_decommissioned</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>d</value>
+        <value>decommissioned</value>
     </sys_choice>
     <sys_choice action="INSERT_OR_UPDATE">
         <dependent_value/>
         <element>operational_status</element>
         <hint/>
         <inactive>false</inactive>
-        <label>e</label>
+        <label>Under Development</label>
         <language>en</language>
         <name>x_146833_claudec_0_it_system</name>
-        <sequence>c</sequence>
+        <sequence>40</sequence>
         <sys_class_name>sys_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>5f08f1b12cac3e7acf22369a568ccbbe</sys_id>
+        <sys_id>e65f0a2cf4738053266442b012fac5a0</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
         <sys_policy/>
         <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_D</sys_update_name>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_under_development</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>D</value>
-    </sys_choice>
-    <sys_choice action="INSERT_OR_UPDATE">
-        <dependent_value/>
-        <element>operational_status</element>
-        <hint/>
-        <inactive>false</inactive>
-        <label></label>
-        <language>en</language>
-        <name>x_146833_claudec_0_it_system</name>
-        <sequence></sequence>
-        <sys_class_name>sys_choice</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
-        <sys_id>574c56f9f6d335395d793f35a58dec5d</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
-        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_operational_status_300</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
-        <value>300</value>
+        <value>under_development</value>
     </sys_choice>
 </record_update>
