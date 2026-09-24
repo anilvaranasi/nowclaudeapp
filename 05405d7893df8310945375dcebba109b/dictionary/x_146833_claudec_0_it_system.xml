@@ -1,5 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="42e9d6cd83e30790b96f6ed0deaad3e4" label="IT System" max_length="40" name="x_146833_claudec_0_it_system" type="collection">
+        <element choice="1" label="Data Security Risk Level" max_length="40" name="data_security_risk_level" type="string">
+            <choice/>
+        </element>
+        <element label="SSPA" max_length="255" name="sspa" type="string"/>
+        <element choice="1" label="Business Domain" max_length="40" name="business_domain" type="string">
+            <choice/>
+        </element>
+        <element label="IT System Owner" max_length="32" name="it_system_owner" reference="sys_user" type="reference"/>
+        <element choice="1" label="Internet Facing" max_length="40" name="internet_facing" type="string">
+            <choice/>
+        </element>
+        <element label="Project Description" max_length="4000" name="project_description" type="string"/>
+        <element label="Personnel Data" max_length="1000" name="personnel_data" type="string"/>
+        <element label="Organisational Unit Name" max_length="255" name="organisational_unit_name" type="string"/>
+        <element label="Operations Manager" max_length="32" name="ops_manager" reference="sys_user" type="reference"/>
+        <element label="Project Account Email" max_length="100" name="project_account_email" type="email"/>
+        <element label="Operations Manager Email" max_length="100" name="ops_manager_email" type="email"/>
+        <element choice="1" label="Defence Entity" max_length="40" name="defence_entity" type="string">
+            <choice/>
+        </element>
+        <element label="All Group" max_length="1024" name="all_group" reference="sys_user_group" type="glide_list"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="1" label="Services" max_length="40" name="services" type="string">
+            <choice/>
+        </element>
+        <element label="Planned System Commissioning Date" max_length="10" name="planned_commissioning_date" type="glide_date"/>
+        <element label="Data Security Risk Impact" max_length="1000" name="data_security_risk_impact" type="string"/>
+        <element label="Service Manager Group" max_length="32" name="sm_group" reference="sys_user_group" type="reference"/>
+        <element label="System Manager Email" max_length="100" name="system_manager_email" type="email"/>
+        <element choice="1" label="System Criticality" max_length="40" name="system_criticality" type="string">
+            <choice/>
+        </element>
+        <element label="IM Declared" max_length="40" name="im_declared" type="boolean"/>
+        <element label="Operations Manager Group" max_length="32" name="om_group" reference="sys_user_group" type="reference"/>
+        <element label="FOC Final Operational Capability Date" max_length="10" name="foc_date" type="glide_date"/>
+        <element label="Project ID" max_length="40" name="project_id" type="string"/>
+        <element label="Supporting Technical Entity" max_length="255" name="supporting_technical_entity" type="string"/>
+        <element label="Project Manager Group" max_length="32" name="pm_group" reference="sys_user_group" type="reference"/>
+        <element label="Can This Be Replaced By Any SaaS" max_length="40" name="can_be_replaced_by_saas" type="boolean"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" label="Cloud Service Model" max_length="40" name="cloud_service_model" type="string">
+            <choice/>
+        </element>
+        <element label="Go Live Date" max_length="10" name="go_live_date" type="glide_date"/>
+        <element label="Project Name" mandatory="true" max_length="255" name="project_name" type="string"/>
+        <element label="Business Capability Name" max_length="255" name="business_capability_name" type="string"/>
+        <element label="System Manager" max_length="32" name="system_manager" reference="sys_user" type="reference"/>
+        <element label="Project Short Name" max_length="100" name="project_short_name" type="string"/>
+        <element choice="1" label="Security Classification" max_length="40" name="security_classification" type="string">
+            <choice/>
+        </element>
+        <element label="Business Impact Analysis" max_length="4000" name="business_impact_analysis" type="string"/>
+        <element label="Fulfilment Group" max_length="32" name="fulfilment_group" reference="sys_user_group" type="reference"/>
+        <element choice="1" default="operational" label="Operational Status" max_length="40" name="operational_status" type="string">
+            <choice/>
+        </element>
+        <element label="Risk Materiality Level" max_length="255" name="risk_materiality_level" type="string"/>
+        <element choice="1" label="Network Environment" max_length="40" name="network_environment" type="string">
+            <choice>
+                <element inactive_on_update="false" label="INET" value="INET"/>
+            </choice>
+        </element>
+        <element label="Remarks" max_length="4000" name="remarks" type="string"/>
+        <element choice="1" label="System Classification" max_length="40" name="system_classification" type="string">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="fulfilment_group"/>
+        </index>
+        <index name="index2">
+            <element name="it_system_owner"/>
+        </index>
+        <index name="index3">
+            <element name="om_group"/>
+        </index>
+        <index name="index4">
+            <element name="ops_manager"/>
+        </index>
+        <index name="index5">
+            <element name="pm_group"/>
+        </index>
+        <index name="index6">
+            <element name="sm_group"/>
+        </index>
+        <index name="index7">
+            <element name="system_manager"/>
+        </index>
     </element>
 </database>
