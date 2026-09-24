@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_choice">
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>a</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>7308a01e12fb13e0d23c561366c5d961</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_s</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>s</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>a</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>82fe96372124d60f28c9c72a9c6d8abe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_S</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>S</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>6cad830c146b157adeec5eb9145493d1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_100</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>100</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>a</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>ee8597defdbb1e1eace63a6e74f4f422</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_p</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>p</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>a</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>2135fd01bc81c94a8084f0b5bdfad472</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_P</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>P</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>5c9117eacf4ca03d467f2dd26fccb0e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_200</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>200</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>a</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>120bf09da1c03888fd3b51d7e032d884</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_i</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>i</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>a</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>fded1954458273c2c7de1f4b13a00543</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_I</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>I</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>46bb12364433c0b8478a8f4f06a52630</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_300</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>300</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>n</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>_</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>33c5670f0a6b5520d215d718e4a51620</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_o</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>o</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>n</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>-</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>c607581056a6948fe5088693ba7c5ae2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_O</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>O</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>cloud_service_model</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>90ad58f6d56fde715f7c1d5e240d8465</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_cloud_service_model_400</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>400</value>
+    </sys_choice>
+</record_update>

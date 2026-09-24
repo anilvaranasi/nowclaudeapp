@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_choice">
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>internet_facing</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>e</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>s</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>ebb55be3ade6394e9eadbabe27c1da93</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_internet_facing_y</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>y</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>internet_facing</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>e</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>s</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>7713e7fd50433b2b9cbb177545e596e0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_internet_facing_Y</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>Y</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>internet_facing</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>ad56dbd2b1f67d77cef63693aa4c6ca6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_internet_facing_100</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>100</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>internet_facing</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>o</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>adb77e98ae5c05efadcc55324a1d2197</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_internet_facing_n</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>n</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>internet_facing</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>o</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>9185d8756b914f9dc6e7a2eb1bd30f68</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_internet_facing_N</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>N</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>internet_facing</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>533b7de7bfee5b3e6e4ef21c3cb18563</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_internet_facing_200</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>200</value>
+    </sys_choice>
+</record_update>

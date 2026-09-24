@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_choice">
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>e</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>f</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>5756f701031d9653fbb575d1567d5617</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>d</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>e</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>f</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>ceb726c0c322ba4e8fc7f665c9c008eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_D</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>D</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>cfca24fa989021c19d30f8a585a428a8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_100</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>100</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>o</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>r</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>7426d621c5b9da48a70ecd2b152c99f8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>c</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>o</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>r</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>03062c81028b7916251000807815bed9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_C</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>C</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>cfbcb84d8d52d7d44261ded16b06d32f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_200</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>200</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>h</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>5931d7d24f5829e962adb0aba566ce71</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_s</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>s</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>h</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>a</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>5abe5cd8cee814b7d13541a6ccb1e1c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_S</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>S</value>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>business_domain</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label></label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence></sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>efddd0e684641f5f7f8dc0c79eb9c380</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_business_domain_300</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>300</value>
+    </sys_choice>
+</record_update>
