@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><record_update sys_update_name="sys_choice_x_146833_claudec_0_it_system_defence_entity_mindef" table="sys_choice">
+    <sys_choice action="INSERT_OR_UPDATE">
+        <dependent_value/>
+        <element>defence_entity</element>
+        <hint/>
+        <inactive>false</inactive>
+        <label>MINDEF</label>
+        <language>en</language>
+        <name>x_146833_claudec_0_it_system</name>
+        <sequence>10</sequence>
+        <sys_class_name>sys_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 03:00:00</sys_created_on>
+        <sys_id>e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="claudecodehelper" source="x_146833_claudec_0">05405d7893df8310945375dcebba109b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="claudecodehelper">05405d7893df8310945375dcebba109b</sys_scope>
+        <sys_update_name>sys_choice_x_146833_claudec_0_it_system_defence_entity_mindef</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 03:00:00</sys_updated_on>
+        <value>mindef</value>
+    </sys_choice>
+</record_update>
